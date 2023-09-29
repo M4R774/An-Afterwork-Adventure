@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://bdkgacenuhs4q"]
 
+[ext_resource type="Texture2D" uid="uid://cyxifj8oou7md" path="res://2d art/dji_fly_20230812_204504_574_1691862362693_pano.jpg" id="1_giirg"]
 [ext_resource type="PackedScene" uid="uid://dx5184jxv6hi3" path="res://scenes/Player.tscn" id="1_ips0s"]
-[ext_resource type="Texture2D" uid="uid://bmd2co0u77w6u" path="res://2d art/pan_grassland_lg.jpg" id="2_lvfvv"]
 [ext_resource type="PackedScene" uid="uid://tqeyokxa0dbs" path="res://scenes/socket.tscn" id="4_sqf1d"]
 [ext_resource type="PackedScene" uid="uid://ck886vglrw2kg" path="res://scenes/radio.tscn" id="6_yuf1o"]
 [ext_resource type="PackedScene" uid="uid://57unb5sp6ay6" path="res://scenes/extension_cable.tscn" id="7_t4qea"]
@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dthrs460g5dyk" path="res://2d art/input.png" id="11_56hc1"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ntudf"]
-panorama = ExtResource("2_lvfvv")
+panorama = ExtResource("1_giirg")
 
 [sub_resource type="Sky" id="Sky_0qclq"]
 sky_material = SubResource("PanoramaSkyMaterial_ntudf")
