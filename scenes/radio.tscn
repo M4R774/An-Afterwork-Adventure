@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://ck886vglrw2kg"]
+
+[ext_resource type="Script" path="res://scripts/radio.gd" id="1_4fdqc"]
+[ext_resource type="Script" path="res://addons/Rope3D/Rope3D.gd" id="2_y5suh"]
+[ext_resource type="AudioStream" uid="uid://evrytiffibxf" path="res://audio/Purser - Sitting (TJ Mack Cover).ogg" id="3_xtpdq"]
+[ext_resource type="PackedScene" uid="uid://xgl3pexbidre" path="res://scenes/plug.tscn" id="4_rdfd1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s8v4a"]
+size = Vector3(0.392139, 0.366111, 0.372359)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1wepn"]
+albedo_color = Color(1, 0.321569, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_eyqs0"]
+
+[node name="Radio" type="Node3D"]
+
+[node name="radio" type="RigidBody3D" parent="."]
+collision_layer = 16
+script = ExtResource("1_4fdqc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="radio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00117815, 0.18857, -0.000972092)
+shape = SubResource("BoxShape3D_s8v4a")
+
+[node name="RopeEndPoint1" type="Marker3D" parent="radio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.195109, 0.075589, 0)
+
+[node name="Rope3D" type="Node3D" parent="radio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.195503, 0.0356857, 0.000706673)
+script = ExtResource("2_y5suh")
+width = 0.025
+material = SubResource("StandardMaterial3D_1wepn")
+attached_to = NodePath("../../plug/RopeEndPoint2")
+collision_layer = 16
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="radio"]
+transform = Transform3D(0.382, 0, 0, 0, 0.382, 0, 0, 0, 0.382, 0, 0.188839, 0)
+mesh = SubResource("BoxMesh_eyqs0")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="radio"]
+stream = ExtResource("3_xtpdq")
+
+[node name="plug" parent="." node_paths=PackedStringArray("own_devices") instance=ExtResource("4_rdfd1")]
+own_devices = [NodePath("../radio")]
+
+[editable path="plug"]

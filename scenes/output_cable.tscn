@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://bn2aw5aefcpw6"]
+
+[ext_resource type="Script" path="res://scripts/electric_item.gd" id="2_pw2ok"]
+[ext_resource type="Texture2D" uid="uid://bvgintnndi0tf" path="res://2d art/bolt.png" id="3_6qq4v"]
+[ext_resource type="PackedScene" uid="uid://dxidjrjtk7iec" path="res://3d art/output_plug.glb" id="3_7yauw"]
+[ext_resource type="Script" path="res://addons/Rope3D/Rope3D.gd" id="4_c88s1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s8v4a"]
+size = Vector3(0.209035, 0.101992, 0.197694)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1wepn"]
+albedo_color = Color(1, 0.321569, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oc4ot"]
+size = Vector3(0.158829, 0.118568, 0.157325)
+
+[node name="OutputCable" type="Node3D"]
+
+[node name="wall" type="RigidBody3D" parent="."]
+collision_layer = 16
+freeze = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0987398, -0.000269033, -0.00014589)
+shape = SubResource("BoxShape3D_s8v4a")
+
+[node name="RopeEndPoint1" type="Marker3D" parent="wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00294203, 0)
+
+[node name="Rope3D" type="Node3D" parent="wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0128538, 0.000706673)
+script = ExtResource("4_c88s1")
+width = 0.025
+material = SubResource("StandardMaterial3D_1wepn")
+attached_to = NodePath("../../output/RopeEndPoint2")
+collision_layer = 16
+
+[node name="output" type="RigidBody3D" parent="." groups=["pickup", "plug", "socket"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 0, 0)
+collision_layer = 48
+collision_mask = 49
+script = ExtResource("2_pw2ok")
+type = 2
+is_energy_source = true
+has_electricity = true
+
+[node name="RopeEndPoint2" type="Marker3D" parent="output"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.00476027, 0.000116378, -0.323194)
+
+[node name="output_plug" parent="output" instance=ExtResource("3_7yauw")]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -0.0006392, 0, -0.000576064)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="output"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.000352144, 0, -0.23774)
+shape = SubResource("BoxShape3D_oc4ot")
+
+[node name="has_electricity_visualiser" type="Sprite3D" parent="output"]
+transform = Transform3D(-0.0664569, 0, 0, 0, -0.0664569, 0, -2.22045e-16, 0, 1, -0.000272274, 0.141042, -0.225693)
+texture = ExtResource("3_6qq4v")

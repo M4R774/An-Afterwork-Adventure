@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://dx5184jxv6hi3"]
+
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/InteractionManager.gd" id="2_0264i"]
+[ext_resource type="PackedScene" uid="uid://kgvd2rvm0pix" path="res://3d art/hand.glb" id="3_jvhej"]
+
+[sub_resource type="CylinderShape3D" id="1"]
+height = 1.4
+
+[sub_resource type="SphereMesh" id="SphereMesh_7nsib"]
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+collision_layer = 2
+script = ExtResource("1")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 1, 0, 0, 0, 0.4, 0, 0, 0)
+shape = SubResource("1")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="Camera" type="Camera3D" parent="Head"]
+
+[node name="ColorRect" type="ColorRect" parent="Head/Camera"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -8.00012
+offset_right = 11.0
+offset_bottom = 2.99988
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.769852
+color = Color(1, 1, 1, 0.0980392)
+
+[node name="InteractionManager" type="Node3D" parent="Head/Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.244993, -0.129482, -0.888639)
+script = ExtResource("2_0264i")
+
+[node name="Marker3D" type="Marker3D" parent="Head/Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.349068, 0, -0.924811)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Head/Camera/Marker3D"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+visible = false
+mesh = SubResource("SphereMesh_7nsib")
+skeleton = NodePath("../../InteractionManager")
+
+[node name="hand" parent="Head/Camera" instance=ExtResource("3_jvhej")]
+transform = Transform3D(-9.72383e-05, 0.0445601, -0.49801, 0.499999, 0.00109079, -2.63954e-08, 0.00108645, -0.498009, -0.0445602, 0.3341, -0.106524, -0.22719)
+visible = false
+
+[node name="Skeleton3D" parent="Head/Camera/hand/metarig_001" index="0"]
+bones/10/rotation = Quaternion(0.306036, -0.0363918, -0.512049, 0.801763)
+bones/11/rotation = Quaternion(0.330229, 0.0519549, -0.664303, 0.668544)
+bones/14/rotation = Quaternion(0.111738, 0.0347335, -0.642801, 0.757043)
+bones/15/rotation = Quaternion(0.274198, -0.0456009, -0.675628, 0.682835)
+bones/18/rotation = Quaternion(-0.0915478, 0.0099128, -0.672569, 0.734283)
+bones/19/rotation = Quaternion(0.0401808, 0.103147, -0.693152, 0.71224)
+
+[editable path="Head/Camera/hand"]

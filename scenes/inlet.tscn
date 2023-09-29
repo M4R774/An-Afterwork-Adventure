@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://c7tm1sq1imjjm"]
+
+[ext_resource type="Script" path="res://scripts/electric_item.gd" id="1_u6iok"]
+[ext_resource type="PackedScene" uid="uid://tqeyokxa0dbs" path="res://scenes/socket.tscn" id="1_y623u"]
+[ext_resource type="PackedScene" uid="uid://c16l45b3qulb6" path="res://3d art/input_socket.glb" id="2_ah8jl"]
+[ext_resource type="Texture2D" uid="uid://dthrs460g5dyk" path="res://2d art/input.png" id="2_d0r0t"]
+[ext_resource type="Texture2D" uid="uid://bvgintnndi0tf" path="res://2d art/bolt.png" id="3_mjytu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_748a7"]
+size = Vector3(0.158896, 0.1182, 0.212393)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5jy4v"]
+size = Vector3(0.155652, 0.160884, 0.221051)
+
+[node name="inlet" type="Node3D"]
+
+[node name="input" type="RigidBody3D" parent="." node_paths=PackedStringArray("own_sockets") groups=["socket"]]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+freeze = true
+script = ExtResource("1_u6iok")
+type = 1
+own_sockets = [NodePath("../output")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="input"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.19803e-09, 0, -0.107324)
+shape = SubResource("BoxShape3D_748a7")
+
+[node name="Area3D" type="Area3D" parent="input"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="input/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9723e-09, 0, -0.143871)
+shape = SubResource("BoxShape3D_5jy4v")
+
+[node name="input_socket" parent="input" instance=ExtResource("2_ah8jl")]
+
+[node name="has_electricity_visualiser" type="Sprite3D" parent="input"]
+transform = Transform3D(-0.0664569, 0, 0, 0, -0.0664569, 0, 0, 0, 1, 0, 0.161655, -0.1966)
+texture = ExtResource("3_mjytu")
+
+[node name="input_icon" type="Sprite3D" parent="input"]
+transform = Transform3D(0.0525309, 0, 0, 0, 0.0525309, 0, 0, 0, 1, 0, 0.163787, -0.20806)
+visible = false
+texture = ExtResource("2_d0r0t")
+
+[node name="output" parent="." instance=ExtResource("1_y623u")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -0.746172)

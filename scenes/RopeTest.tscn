@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://ciolfa0fc5ta0"]
+
+[ext_resource type="PackedScene" uid="uid://57unb5sp6ay6" path="res://scenes/extension_cable.tscn" id="1_hegat"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bns4m"]
+size = Vector3(9.1587, 1, 8.8912)
+
+[sub_resource type="Environment" id="Environment_6ldfp"]
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[node name="RopeTest" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.64884, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65825, -1.34123, -6.88818)
+shape = SubResource("BoxShape3D_bns4m")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6ldfp")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+
+[node name="ExtensionCable" parent="." instance=ExtResource("1_hegat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.47854, -0.841234, -7.19435)

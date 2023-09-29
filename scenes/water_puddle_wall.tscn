@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://dtqut5vrxdvop"]
+
+[ext_resource type="Script" path="res://scripts/electric_item.gd" id="1_ftl2c"]
+[ext_resource type="Texture2D" uid="uid://bvgintnndi0tf" path="res://2d art/bolt.png" id="2_tfgig"]
+[ext_resource type="PackedScene" uid="uid://cd8hm58m2heei" path="res://3d art/water_puddle_wall.glb" id="3_prvbk"]
+[ext_resource type="Material" uid="uid://d22m6bkwqceeu" path="res://materials/water.tres" id="4_eajra"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_py0vj"]
+data = PackedVector3Array(-1, 0, -0.0003, -0.9415, 0, 0.5255, -1, 0, 0.2314, -0.9415, 0, 0.5255, -0.5255, 0, 0.9415, -0.7749, 0, 0.7749, -0.2314, 0, 1, 0.1107, 0, 1.2044, -0.0574, 0, 1.1307, -0.9415, 0, 0.5255, -0.2314, 0, 1, -0.5255, 0, 0.9415, 1, 0, -0.0003, -0.9415, 0, 0.5255, -1, 0, -0.0003, 1.0266, 0, 0.7506, 1, 0, -0.0003, 1.0631, 0, 0.5206, 0.7672, 0, 1.01, 1.0266, 0, 0.7506, 0.9227, 0, 0.9061, 0.3048, 0, 1.2044, 0.5837, 0, 1.0465, 0.4729, 0, 1.1307, 0.5837, 0, 1.0465, 1.0266, 0, 0.7506, 0.7672, 0, 1.01, 1.0266, 0, 0.7506, -0.9415, 0, 0.5255, 1, 0, -0.0003, -0.9415, 0, 0.5255, 0.1107, 0, 1.2044, -0.2314, 0, 1, 0.1107, 0, 1.2044, 0.5837, 0, 1.0465, 0.3048, 0, 1.2044, 0.5837, 0, 1.0465, -0.9415, 0, 0.5255, 1.0266, 0, 0.7506, -0.9415, 0, 0.5255, 0.5837, 0, 1.0465, 0.1107, 0, 1.2044)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_30b3o"]
+data = PackedVector3Array(-1, 0, -0.0003, -0.9415, 0, 0.5255, -1, 0, 0.2314, -0.9415, 0, 0.5255, -0.5255, 0, 0.9415, -0.7749, 0, 0.7749, -0.2314, 0, 1, 0.1107, 0, 1.2044, -0.0574, 0, 1.1307, -0.9415, 0, 0.5255, -0.2314, 0, 1, -0.5255, 0, 0.9415, 1, 0, -0.0003, -0.9415, 0, 0.5255, -1, 0, -0.0003, 1.0266, 0, 0.7506, 1, 0, -0.0003, 1.0631, 0, 0.5206, 0.7672, 0, 1.01, 1.0266, 0, 0.7506, 0.9227, 0, 0.9061, 0.3048, 0, 1.2044, 0.5837, 0, 1.0465, 0.4729, 0, 1.1307, 0.5837, 0, 1.0465, 1.0266, 0, 0.7506, 0.7672, 0, 1.01, 1.0266, 0, 0.7506, -0.9415, 0, 0.5255, 1, 0, -0.0003, -0.9415, 0, 0.5255, 0.1107, 0, 1.2044, -0.2314, 0, 1, 0.1107, 0, 1.2044, 0.5837, 0, 1.0465, 0.3048, 0, 1.2044, 0.5837, 0, 1.0465, -0.9415, 0, 0.5255, 1.0266, 0, 0.7506, -0.9415, 0, 0.5255, 0.5837, 0, 1.0465, 0.1107, 0, 1.2044)
+
+[node name="water_puddle" type="RigidBody3D" groups=["water"]]
+collision_layer = 16
+collision_mask = 48
+freeze = true
+script = ExtResource("1_ftl2c")
+type = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConcavePolygonShape3D_py0vj")
+
+[node name="Area3D" type="Area3D" parent="." groups=["water"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00190897, 0)
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00190897, 0)
+shape = SubResource("ConcavePolygonShape3D_30b3o")
+
+[node name="has_electricity_visualiser" type="Sprite3D" parent="."]
+transform = Transform3D(-0.0664569, 0, 0, 0, -0.0664569, 0, 0, 0, 1, 0, 0.130768, 0.44985)
+texture = ExtResource("2_tfgig")
+
+[node name="water_puddle_wall" parent="." instance=ExtResource("3_prvbk")]
+
+[node name="water_puddle_wall2" parent="water_puddle_wall" index="0"]
+material_override = ExtResource("4_eajra")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+
+[editable path="water_puddle_wall"]

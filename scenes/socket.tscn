@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://tqeyokxa0dbs"]
+
+[ext_resource type="Script" path="res://scripts/electric_item.gd" id="1_h3jva"]
+[ext_resource type="PackedScene" uid="uid://c4tv1yk6g82a6" path="res://3d art/socket.glb" id="1_sm5c1"]
+[ext_resource type="Texture2D" uid="uid://bvgintnndi0tf" path="res://2d art/bolt.png" id="3_grgrt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_748a7"]
+size = Vector3(0.153036, 0.160884, 0.061476)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5jy4v"]
+size = Vector3(0.155652, 0.160884, 0.221051)
+
+[node name="socket" type="RigidBody3D" groups=["socket"]]
+collision_layer = 48
+collision_mask = 33
+freeze = true
+script = ExtResource("1_h3jva")
+type = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.18966)
+shape = SubResource("BoxShape3D_748a7")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.109872)
+shape = SubResource("BoxShape3D_5jy4v")
+
+[node name="socket" parent="." instance=ExtResource("1_sm5c1")]
+
+[node name="has_electricity_visualiser" type="Sprite3D" parent="."]
+transform = Transform3D(-0.0664569, 0, 0, 0, -0.0664569, 0, 0, 0, 1, 0, 0.161655, -0.1966)
+texture = ExtResource("3_grgrt")

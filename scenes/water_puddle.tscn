@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://chf11pfh8q0sj"]
+
+[ext_resource type="Script" path="res://scripts/electric_item.gd" id="1_ats4w"]
+[ext_resource type="Texture2D" uid="uid://bvgintnndi0tf" path="res://2d art/bolt.png" id="2_ofyxt"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mm10u"]
+height = 0.01093
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_tfwn5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ch3we"]
+albedo_color = Color(0.345098, 0.52549, 0.74902, 1)
+
+[node name="water_puddle" type="RigidBody3D" groups=["water"]]
+collision_layer = 16
+collision_mask = 48
+freeze = true
+script = ExtResource("1_ats4w")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1.43572, 0, 0, 0, 1, 0, 0, 0, 1.43572, 0, -0.00190897, 0)
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00732096, 0)
+shape = SubResource("CylinderShape3D_mm10u")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.43572, 0, 0, 0, 0.01, 0, 0, 0, 1.43572, 0, 0, 0)
+transparency = 0.5
+mesh = SubResource("CylinderMesh_tfwn5")
+surface_material_override/0 = SubResource("StandardMaterial3D_ch3we")
+
+[node name="has_electricity_visualiser" type="Sprite3D" parent="."]
+transform = Transform3D(-0.0664569, 0, 0, 0, -0.0664569, 0, 0, 0, 1, 0, 0.130768, -0.067008)
+visible = false
+texture = ExtResource("2_ofyxt")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

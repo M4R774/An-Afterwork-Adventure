@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cejo0ksw6m7kd"]
+
+[ext_resource type="Script" path="res://scripts/socket.gd" id="1_p11lv"]
+[ext_resource type="PackedScene" uid="uid://c4tv1yk6g82a6" path="res://3d art/socket.glb" id="1_sm5c1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_748a7"]
+size = Vector3(0.153036, 0.160884, 0.061476)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5jy4v"]
+size = Vector3(0.155652, 0.160884, 0.221051)
+
+[node name="socket" type="Node3D" groups=["socket"]]
+script = ExtResource("1_p11lv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." groups=["socket"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.18966)
+shape = SubResource("BoxShape3D_748a7")
+
+[node name="socket" parent="." instance=ExtResource("1_sm5c1")]
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.109872)
+shape = SubResource("BoxShape3D_5jy4v")
