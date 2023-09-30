@@ -1,6 +1,6 @@
-extends Spatial
+extends Node3D
 
-onready var door = $Door
+@onready var door = $Door
 
 func _on_Keypad_on_correct_password(password):
 	print("correct password")

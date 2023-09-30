@@ -1,4 +1,4 @@
-extends KinematicBody
+extends CharacterBody3D
 
 # -- Constants --
 const MOVESPEED = 7
@@ -17,14 +17,14 @@ const ACCELERATION = {
 # -- Variables --
 var snap
 var direction = Vector3()
-var velocity = Vector3()
+var velocity_oma = Vector3()
 var gravity_vec = Vector3()
 var movement = Vector3()
 var accel = ACCELERATION["normal"]
 
 # -- References --
-onready var head = $Head
-onready var camera = $Head/Camera
+@onready var head = $Head
+@onready var camera = $Head/Camera
 
 # locks the cursor to game window and hides it
 func _ready():
@@ -33,9 +33,9 @@ func _ready():
 # handles looking aroung with mouse
 func _input(event):
 	if event is InputEventMouseMotion:
-		rotate_y(deg2rad(-event.relative.x * MOUSE["x"]))
-		head.rotate_x(deg2rad(-event.relative.y * MOUSE["y"]))
-		head.rotation.x = clamp(head.rotation.x, deg2rad(-89), deg2rad(89))
+		rotate_y(deg_to_rad(-event.relative.x * MOUSE["x"]))
+		head.rotate_x(deg_to_rad(-event.relative.y * MOUSE["y"]))
+		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 
 # handles main movements like walk and jump
 func _physics_process(delta):
@@ -63,7 +63,7 @@ func _physics_process(delta):
 		gravity_vec = Vector3.UP * JUMP
 
 	# move the player
-	velocity = velocity.linear_interpolate(direction * MOVESPEED, accel * delta)
-	movement = velocity + gravity_vec
+	velocity_oma = velocity_oma.lerp(direction * MOVESPEED, accel * delta)
+	movement = velocity_oma + gravity_vec
 
-	var _value = move_and_slide_with_snap(movement, snap, Vector3.UP)
+	var _value = move_and_slide()

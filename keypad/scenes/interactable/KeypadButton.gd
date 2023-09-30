@@ -1,6 +1,6 @@
-tool
+# tool
 extends Interactable
-export var number = "0" setget set_number
+@export var number = "0"
 
 var interaction_text = "interact with keypad button"
 
@@ -10,7 +10,6 @@ func set_number(value):
 	number = value
 	if value:
 		$Viewport/Label.text = str(value)
-
 
 func get_interaction_text():
 	return interaction_text

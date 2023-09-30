@@ -6,7 +6,8 @@ enum STATE {
 }
 
 var state = STATE.CLOSED
-onready var anim_player = $AnimationPlayer
+# onready var anim_player = $AnimationPlayer
+@onready var anim_player = $AnimationPlayer
 
 # interactable
 func get_interaction_text():

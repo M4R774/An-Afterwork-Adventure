@@ -1,51 +1,40 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=3 uid="uid://bds4csqlvb1la"]
 
-[ext_resource path="res://fonts/roboto16.tres" type="DynamicFont" id=1]
-[ext_resource path="res://scenes/interactable/KeypadButton.gd" type="Script" id=2]
+[ext_resource type="Script" path="res://keypad/scenes/interactable/KeypadButton.gd" id="2"]
 
-[sub_resource type="SpatialMaterial" id=1]
-albedo_color = Color( 0.372549, 0.372549, 0.372549, 1 )
+[sub_resource type="StandardMaterial3D" id="1"]
+albedo_color = Color(0.372549, 0.372549, 0.372549, 1)
 roughness = 0.56
 
-[sub_resource type="CubeMesh" id=2]
-material = SubResource( 1 )
-size = Vector3( 0.1, 0.1, 0.01 )
+[sub_resource type="BoxMesh" id="2"]
+material = SubResource("1")
+size = Vector3(0.1, 0.1, 0.01)
 
-[sub_resource type="ViewportTexture" id=3]
+[sub_resource type="ViewportTexture" id="3"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="BoxShape" id=4]
-extents = Vector3( 0.05, 0.05, 0.006 )
+[sub_resource type="BoxShape3D" id="4"]
+size = Vector3(0.1, 0.1, 0.012)
 
-[node name="KeypadButton" type="StaticBody"]
+[node name="KeypadButton" type="StaticBody3D"]
 collision_layer = 2
-script = ExtResource( 2 )
+script = ExtResource("2")
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
-mesh = SubResource( 2 )
-material/0 = null
+[node name="MeshInstance" type="MeshInstance3D" parent="."]
+mesh = SubResource("2")
 
-[node name="Viewport" type="Viewport" parent="."]
-size = Vector2( 20, 20 )
+[node name="Viewport" type="SubViewport" parent="."]
 transparent_bg = true
+size = Vector2i(20, 20)
 
 [node name="Label" type="Label" parent="Viewport"]
-margin_right = 11.0
-margin_bottom = 19.0
-rect_min_size = Vector2( 20, 20 )
-custom_fonts/font = ExtResource( 1 )
 text = "0"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, -0.006 )
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, -0.006)
 flip_h = true
 flip_v = true
-texture = SubResource( 3 )
+texture = SubResource("3")
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
-shape = SubResource( 4 )
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
+shape = SubResource("4")
