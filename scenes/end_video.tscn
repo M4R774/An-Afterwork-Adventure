@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://be4rlmq5djcm6"]
+[gd_scene load_steps=2 format=3 uid="uid://be4rlmq5djcm6"]
+
+[ext_resource type="VideoStream" path="res://2d art/dji_fly_20230930_224326_580_1696103641016_quickshot.ogv" id="1_rptv5"]
 
 [node name="end_video" type="Control"]
 layout_mode = 3
@@ -7,3 +9,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+stream = ExtResource("1_rptv5")
+autoplay = true

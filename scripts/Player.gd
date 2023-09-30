@@ -19,6 +19,7 @@ var sensitivity = 0.05
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	add_to_group("Player")
 	
 func _input(event):
 	# Mouse lock

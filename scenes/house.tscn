@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bdkgacenuhs4q"]
+[gd_scene load_steps=25 format=3 uid="uid://bdkgacenuhs4q"]
 
 [ext_resource type="Texture2D" uid="uid://cyxifj8oou7md" path="res://2d art/dji_fly_20230812_204504_574_1691862362693_pano.jpg" id="1_giirg"]
 [ext_resource type="PackedScene" uid="uid://dx5184jxv6hi3" path="res://scenes/Player.tscn" id="1_ips0s"]
@@ -14,7 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://dthrs460g5dyk" path="res://2d art/input.png" id="11_56hc1"]
 [ext_resource type="PackedScene" uid="uid://bhwdjuocaxtjv" path="res://keypad/scenes/door/Door.tscn" id="13_cgwom"]
 [ext_resource type="PackedScene" uid="uid://fg5sus138qia" path="res://keypad/scenes/keypad/Keypad.tscn" id="14_rcjnl"]
-[ext_resource type="PackedScene" path="res://scenes/keyboard.tscn" id="15_n23yc"]
+
+[ext_resource type="PackedScene" uid="uid://hq6h0lejmjyh" path="res://scenes/keyboard.tscn" id="15_n23yc"]
+[ext_resource type="Script" path="res://scripts/Goal.gd" id="16_rhviy"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ntudf"]
 panorama = ExtResource("1_giirg")
@@ -50,6 +52,8 @@ size = Vector3(0.158896, 0.1182, 0.212393)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5jy4v"]
 size = Vector3(0.155652, 0.160884, 0.221051)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mdqbl"]
 
 [node name="house" type="Node3D"]
 
@@ -144,3 +148,15 @@ door = NodePath("../Door")
 
 [node name="Node3D" parent="." instance=ExtResource("15_n23yc")]
 transform = Transform3D(0.5, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 5.61005, 1.75005, 3.11127)
+
+[node name="Goal" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3314, 1.69868, -2.15382)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("16_rhviy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Goal"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -1.38101)
+shape = SubResource("BoxShape3D_mdqbl")
+
+[connection signal="body_entered" from="Goal" to="Goal" method="_on_body_entered"]
