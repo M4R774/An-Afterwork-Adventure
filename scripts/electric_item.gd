@@ -1,5 +1,7 @@
 extends RigidBody3D
 
+signal electricity_changed
+
 @export_flags ("plug", "socket", "water") var type: int = 0
 
 @export var is_energy_source : bool
@@ -80,6 +82,7 @@ func change_electricity(value):
 				device.change_electricity(value)
 		#if plug != null:
 			#plug.has_electricity = value
+		emit_signal("electricity_changed", value)
 
 
 func can_plug_in(incoming_item):
