@@ -11,13 +11,18 @@ config_version=5
 [application]
 
 config/name="Ludum Dare 54"
-run/main_scene="res://scenes/gofore.tscn"
+run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 AttachableItem="*res://scripts/AttachableItem.gd"
+HIGHSCORE_SINGLETON="*res://scripts/Menus and highscore/HIGHSCORE_SINGLETON.gd"
+
+[display]
+
+window/stretch/mode="viewport"
 
 [editor_plugins]
 
