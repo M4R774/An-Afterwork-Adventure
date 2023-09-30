@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dthrs460g5dyk" path="res://2d art/input.png" id="11_56hc1"]
 [ext_resource type="PackedScene" uid="uid://bhwdjuocaxtjv" path="res://keypad/scenes/door/Door.tscn" id="13_cgwom"]
 [ext_resource type="PackedScene" uid="uid://fg5sus138qia" path="res://keypad/scenes/keypad/Keypad.tscn" id="14_rcjnl"]
-[ext_resource type="PackedScene" path="res://scenes/keyboard.tscn" id="15_n23yc"]
+[ext_resource type="PackedScene" uid="uid://hq6h0lejmjyh" path="res://scenes/keyboard.tscn" id="15_n23yc"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ntudf"]
 panorama = ExtResource("1_giirg")
