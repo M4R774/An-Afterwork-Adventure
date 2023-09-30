@@ -1,5 +1,5 @@
-# tool
 extends Interactable
+
 @export var number = "0"
 
 var interaction_text = "interact with keypad button"

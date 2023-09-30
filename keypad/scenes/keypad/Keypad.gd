@@ -32,16 +32,10 @@ func _ready():
 func on_button_interact(value):
 	if is_audio_playing:
 		return
-
 	is_audio_playing = true
 	pressed_audio.playing = true
-
-
-	print("infteracted with " + str(value))
-
-	# enter key is pressed
+	# print("interacted with " + str(value))
 	if value == ".":
-		# check if the number is the correct number
 		if password == correct_password:
 			correct_audio.play()
 			emit_signal("on_correct_password", password)
@@ -49,16 +43,10 @@ func on_button_interact(value):
 			wrong_audio.play()
 			emit_signal("on_wrong_password", password)
 		password = ""
-
-	# clear key is pressed
 	elif value == "C":
-		# clear the current number
 		emit_signal("on_clear_password", password)
 		password = ""
-
-	# digit key is pressed
-	else:
-		# got a number value
+	else:  # digit key is pressed
 		if password.length() == correct_password.length():
 			return
 		password += value
@@ -68,7 +56,6 @@ func on_button_interact(value):
 
 func _on_AudioStreamPlayer3D_finished():
 	is_audio_playing = false
-
 
 func _on_Keypad_on_correct_password(password):
 	print("correct password")
