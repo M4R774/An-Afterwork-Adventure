@@ -1,6 +1,7 @@
 extends Node3D
 
 @export var correct_password = "1234"
+@export var door: Interactable = null
 
 var is_audio_playing = false
 var password = ""
@@ -17,9 +18,15 @@ signal on_clear_password
 signal on_keypad_press
 
 func _ready():
+	on_correct_password.connect(_on_Keypad_on_correct_password)
+	if door == null:
+		print("Error: Door not set for keypad")
+	var i = 0
 	for child in keys.get_children():
 		if child is StaticBody3D:
-			on_keypad_press.connect(on_button_interact)
+			child.set_number(child.get_number())
+			i += 1
+			child.on_interact.connect(on_button_interact)
 	password_label.text = ""
 
 func on_button_interact(value):
@@ -30,7 +37,7 @@ func on_button_interact(value):
 	pressed_audio.playing = true
 
 
-	print("interacted with " + value)
+	print("infteracted with " + str(value))
 
 	# enter key is pressed
 	if value == ".":
@@ -61,3 +68,11 @@ func on_button_interact(value):
 
 func _on_AudioStreamPlayer3D_finished():
 	is_audio_playing = false
+
+
+func _on_Keypad_on_correct_password(password):
+	print("correct password")
+	if door == null:
+		print("Error: Password was correct, but the keypad was not connected to any door or interactable.")
+	else:
+		door.open()

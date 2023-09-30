@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dx5184jxv6hi3"]
+[gd_scene load_steps=7 format=3 uid="uid://dx5184jxv6hi3"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/InteractionManager.gd" id="2_0264i"]
 [ext_resource type="PackedScene" uid="uid://kgvd2rvm0pix" path="res://3d art/hand.glb" id="3_jvhej"]
+[ext_resource type="Script" path="res://keypad/scenes/player/Interaction.gd" id="4_71ge0"]
 
 [sub_resource type="CylinderShape3D" id="1"]
 height = 1.4
@@ -61,5 +62,24 @@ bones/14/rotation = Quaternion(0.111738, 0.0347335, -0.642801, 0.757043)
 bones/15/rotation = Quaternion(0.274198, -0.0456009, -0.675628, 0.682835)
 bones/18/rotation = Quaternion(-0.0915478, 0.0099128, -0.672569, 0.734283)
 bones/19/rotation = Quaternion(0.0401808, 0.103147, -0.693152, 0.71224)
+
+[node name="InteractionRayCast" type="RayCast3D" parent="Head/Camera"]
+transform = Transform3D(1, 0, -1.5246e-23, -1.5246e-23, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+collision_mask = 2
+script = ExtResource("4_71ge0")
+
+[node name="InteractionLabel" type="Label" parent="Head/Camera/InteractionRayCast"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 40
+text = "Press E to interact with name"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [editable path="Head/Camera/hand"]

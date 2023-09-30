@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bhn6mbwwi1kw"]
 
 [ext_resource type="PackedScene" uid="uid://bhwdjuocaxtjv" path="res://keypad/scenes/door/Door.tscn" id="1"]
-[ext_resource type="PackedScene" path="res://keypad/scenes/player/Player.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://dplh5uarb67yp" path="res://keypad/scenes/player/Player.tscn" id="2"]
 [ext_resource type="Texture2D" uid="uid://2ymjqijig5y8" path="res://keypad/assets/center_cursor.png" id="3"]
 [ext_resource type="PackedScene" uid="uid://fg5sus138qia" path="res://keypad/scenes/keypad/Keypad.tscn" id="5"]
 [ext_resource type="Script" path="res://keypad/scenes/world/World.gd" id="6"]
