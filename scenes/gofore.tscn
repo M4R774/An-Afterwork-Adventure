@@ -93,6 +93,9 @@ environment = SubResource("Environment_ob0n4")
 [node name="gofore_0" parent="." instance=ExtResource("9_4qgbe")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.826956, 0.0135825, -0.668772)
 
+[node name="gofore_o_door" parent="gofore_0" index="0"]
+script = ExtResource("4_j1f8q")
+
 [node name="door_cable" type="Node3D" parent="gofore_0"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.22051, 0.0761226, 2.28936)
 
@@ -215,7 +218,7 @@ freeze = true
 script = ExtResource("8_mjvms")
 type = 1
 has_electricity = true
-own_sockets = [NodePath(""), NodePath(""), NodePath("")]
+own_sockets = [null, null, null]
 
 [node name="RopeEndPoint2" type="Marker3D" parent="gofore_0/ExtensionCable/plug"]
 transform = Transform3D(-0.0483094, 0, 0.998832, 0, 1, 0, -0.998832, 0, -0.0483094, 0.0230988, 0.0857404, -0.00754052)
@@ -245,9 +248,6 @@ transform = Transform3D(1, 0, -7.10543e-15, 0, 1, 0, 7.10543e-15, 0, 1, -0.00696
 [node name="CollisionShape3D" type="CollisionShape3D" parent="gofore_0/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.492663, 0.388609, -0.738013)
 shape = SubResource("BoxShape3D_7k545")
-
-[node name="gofore_o_door" parent="gofore_0" index="4"]
-script = ExtResource("4_j1f8q")
 
 [connection signal="electricity_changed" from="gofore_0/door_cable/plug" to="gofore_0/gofore_o_door" method="_on_plug_electricity_changed"]
 
