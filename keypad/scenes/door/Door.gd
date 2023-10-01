@@ -31,8 +31,8 @@ func open():
 		return
 	if state == STATE.OPEN:
 		return
-
-	anim_player.play("door_open")
+	anim_player.play("open_door")
+	print("door opened")
 
 func close():
 	# return if door is in mid animation
@@ -40,10 +40,10 @@ func close():
 		return
 	if state == STATE.CLOSED:
 		return
-	anim_player.play_backwards("door_open")
+	anim_player.play_backwards("open_door")
 
 
-func _on_AnimationPlayer_animation_finished(anim_name):
+func _on_AnimationPlayer_animation_finished(anim_string):
 	if state == STATE.OPEN:
 		state = STATE.CLOSED
 	else:
