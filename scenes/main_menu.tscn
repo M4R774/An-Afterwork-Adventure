@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cmm1h57n8bdbm"]
+[gd_scene load_steps=9 format=3 uid="uid://cmm1h57n8bdbm"]
 
 [ext_resource type="Script" path="res://Scripts/Menus and highscore/reset.gd" id="1_5ew53"]
 [ext_resource type="Theme" uid="uid://c58w503qkdt8i" path="res://theme.tres" id="3"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/Menus and highscore/to_highscores.gd" id="4_d3a0q"]
 [ext_resource type="Script" path="res://Scripts/Menus and highscore/volume_slider.gd" id="5_psdlo"]
 [ext_resource type="VideoStream" path="res://2d art/dji_fly_20230930_225002_582_1696103570989_quickshot.ogv" id="6_4q813"]
+[ext_resource type="AudioStream" uid="uid://dghrk0sqkjum0" path="res://audio/LimitedSpaceMAINMENU.ogg" id="8_6kn5i"]
 
 [node name="Main menu" type="Control"]
 layout_mode = 3
@@ -98,6 +99,7 @@ value = 0.5
 script = ExtResource("5_psdlo")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_6kn5i")
 autoplay = true
 
 [connection signal="finished" from="VideoStreamPlayer" to="VideoStreamPlayer" method="_on_finished"]
