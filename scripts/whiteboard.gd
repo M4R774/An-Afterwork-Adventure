@@ -1,6 +1,6 @@
 extends Interactable
 
-var interaction_text = "interact with whiteboard"
+var interaction_text = "wipe the whiteboard"
 
 var wiped_material = preload("res://textures/wiped_material.tres")
 

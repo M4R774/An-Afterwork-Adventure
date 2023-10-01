@@ -1,6 +1,6 @@
 extends Interactable
 
-var interaction_text = "interact with keyboard"
+var interaction_text = "flip keyboard"
 var keyboard_flipped = false
 
 @onready var animation_player = $AnimationPlayer

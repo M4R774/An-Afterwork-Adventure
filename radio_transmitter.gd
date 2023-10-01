@@ -16,7 +16,7 @@ func _on_plug_electricity_changed(value):
 
 # overriden in child
 func get_interaction_text():
-	return ""
+	return "pick up transmitter"
 
 # overriden in child
 func interact():

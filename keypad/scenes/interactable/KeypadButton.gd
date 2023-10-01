@@ -15,7 +15,7 @@ func get_number():
 	return number
 
 func get_interaction_text():
-	return interaction_text
+	return "press button " + number
 
 func interact():
 	emit_signal("on_interact", number)
