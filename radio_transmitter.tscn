@@ -22,6 +22,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52265, 0.258849, -0.701001
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32634, 0, -0.647551)
 collision_layer = 18
 script = ExtResource("2_510f5")
+interaction_text = "pick up radio transmitter"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="plug_with_cable/extension"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00691557, 0.0444848, -0.278395)

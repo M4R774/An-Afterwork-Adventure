@@ -9,6 +9,6 @@ func get_interaction_text():
 
 
 func interact():
-	var player_inventory = get_tree().root.get_node("gofore/Player/Inventory")
+	var player_inventory = get_tree().root.get_node("gameplay/Player/Inventory")
 	player_inventory.add_item_to_inventory(player_inventory.items.keycard)
 	queue_free()

@@ -2,7 +2,7 @@ extends RigidBody3D
 
 var is_in_hand = false
 var hand
-
+@export var interaction_text: String = "pick up radio equipment"
 
 
 func _physics_process(delta):
@@ -24,7 +24,7 @@ func drop():
 
 # overriden in child
 func get_interaction_text():
-	return "pick up radio transmitter"
+	return interaction_text
 
 # overriden in child
 func interact():
