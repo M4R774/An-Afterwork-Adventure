@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjmhnctpfd7jh"]
+
+[ext_resource type="Script" path="res://addons/Rope3D/Rope3D.gd" id="4_muas5"]
+[ext_resource type="PackedScene" uid="uid://xgl3pexbidre" path="res://scenes/plug.tscn" id="5_rluo4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s8v4a"]
+size = Vector3(0.12136, 0.101992, 0.134236)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1wepn"]
+albedo_color = Color(1, 0.321569, 1, 1)
+
+[node name="plug_with_cable" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52265, 0.258849, -0.701001)
+
+[node name="extension" type="RigidBody3D" parent="." groups=["pickup"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32634, 0, -0.647551)
+collision_layer = 16
+freeze = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="extension"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00117815, -0.000269033, -0.238231)
+shape = SubResource("BoxShape3D_s8v4a")
+
+[node name="RopeEndPoint1" type="Marker3D" parent="extension"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00294203, 0)
+
+[node name="Rope3D" type="Node3D" parent="extension"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0128538, 0.000706673)
+script = ExtResource("4_muas5")
+width = 0.025
+material = SubResource("StandardMaterial3D_1wepn")
+attached_to = NodePath("../../plug/RopeEndPoint2")
+collision_layer = 16
+
+[node name="plug" parent="." instance=ExtResource("5_rluo4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12015, 0, 1.91366)
+
+[editable path="plug"]
