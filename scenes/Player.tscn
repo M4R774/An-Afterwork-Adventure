@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dx5184jxv6hi3"]
+[gd_scene load_steps=8 format=3 uid="uid://dx5184jxv6hi3"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/InteractionManager.gd" id="2_0264i"]
 [ext_resource type="PackedScene" uid="uid://kgvd2rvm0pix" path="res://3d art/hand.glb" id="3_jvhej"]
 [ext_resource type="Script" path="res://keypad/scenes/player/Interaction.gd" id="4_71ge0"]
 [ext_resource type="Script" path="res://scripts/Inventory.gd" id="5_j8ed5"]
-[ext_resource type="AudioStream" uid="uid://dwxw365mopu2r" path="res://audio/LimitedSpace01_0_3-_publish.ogg" id="6_jnbt1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vti54"]
 height = 1.7
@@ -25,6 +24,7 @@ shape = SubResource("CapsuleShape3D_vti54")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 
 [node name="Camera" type="Camera3D" parent="Head"]
+current = true
 
 [node name="ColorRect" type="ColorRect" parent="Head/Camera"]
 anchors_preset = 8
@@ -89,9 +89,5 @@ vertical_alignment = 1
 
 [node name="Inventory" type="Node" parent="."]
 script = ExtResource("5_j8ed5")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_jnbt1")
-autoplay = true
 
 [editable path="Head/Camera/hand"]
