@@ -98,4 +98,7 @@ step = 0.01
 value = 0.5
 script = ExtResource("5_psdlo")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+autoplay = true
+
 [connection signal="finished" from="VideoStreamPlayer" to="VideoStreamPlayer" method="_on_finished"]
