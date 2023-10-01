@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://bjba0b0pobwy7"
-path="res://.godot/imported/Frosty_Forestry_main_menu_theme.mp3-8d96f378ccc30f49e200fce5a55b348e.mp3str"
+path="res://.godot/imported/Frosty_Forestry_main_menu_theme.mp3-2f77bd49cf14ba698dc0cbd8fe343bc5.mp3str"
 
 [deps]
 
-source_file="res://Sounds/Frosty_Forestry_main_menu_theme.mp3"
-dest_files=["res://.godot/imported/Frosty_Forestry_main_menu_theme.mp3-8d96f378ccc30f49e200fce5a55b348e.mp3str"]
+source_file="res://sounds/Frosty_Forestry_main_menu_theme.mp3"
+dest_files=["res://.godot/imported/Frosty_Forestry_main_menu_theme.mp3-2f77bd49cf14ba698dc0cbd8fe343bc5.mp3str"]
 
 [params]
 

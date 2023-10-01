@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://cmm1h57n8bdbm"]
 
-[ext_resource type="Script" path="res://Scripts/Menus and highscore/reset.gd" id="1_5ew53"]
+[ext_resource type="Script" path="res://scripts/Menus and highscore/reset.gd" id="1_5ew53"]
 [ext_resource type="VideoStream" path="res://2d art/main_menu_video.ogv" id="2_da1lx"]
 [ext_resource type="Theme" uid="uid://c58w503qkdt8i" path="res://theme.tres" id="3"]
-[ext_resource type="Script" path="res://Scripts/Menus and highscore/to_gameplay.gd" id="3_a6di8"]
+[ext_resource type="Script" path="res://scripts/Menus and highscore/to_gameplay.gd" id="3_a6di8"]
 [ext_resource type="Script" path="res://scripts/videolooper.gd" id="3_gtyo2"]
-[ext_resource type="Script" path="res://Scripts/Menus and highscore/to_highscores.gd" id="4_d3a0q"]
-[ext_resource type="Script" path="res://Scripts/Menus and highscore/volume_slider.gd" id="5_psdlo"]
+[ext_resource type="Script" path="res://scripts/Menus and highscore/to_highscores.gd" id="4_d3a0q"]
+[ext_resource type="Script" path="res://scripts/Menus and highscore/volume_slider.gd" id="5_psdlo"]
 [ext_resource type="AudioStream" uid="uid://dghrk0sqkjum0" path="res://audio/LimitedSpaceMAINMENU.ogg" id="8_6kn5i"]
 
 [node name="Main menu" type="Control"]
