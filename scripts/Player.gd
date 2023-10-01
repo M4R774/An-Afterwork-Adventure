@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 # Movement
 const MAX_VELOCITY_AIR = 0.6
-const MAX_VELOCITY_GROUND = 6.0
+const MAX_VELOCITY_GROUND = 2.5
 const MAX_ACCELERATION = 10 * MAX_VELOCITY_GROUND
 const GRAVITY = 15.34
 const STOP_SPEED = 1.5
@@ -10,9 +10,10 @@ const JUMP_IMPULSE = sqrt(2 * GRAVITY * 0.85)
 const PLAYER_WALKING_MULTIPLIER = 0.666
 
 var direction = Vector3()
-var friction = 4
+var friction = 10
 var wish_jump
 var walking = false
+var crouched = true
 
 # Camera
 var sensitivity = 0.05
@@ -41,8 +42,8 @@ func _handle_camera_rotation(event: InputEvent):
 	rotate_y(deg_to_rad(-event.relative.x * sensitivity))
 	$Head.rotate_x(deg_to_rad(-event.relative.y * sensitivity))
 	
-	# Stop the head from rotating to far up or down
-	$Head.rotation.x = clamp($Head.rotation.x, deg_to_rad(-60), deg_to_rad(90))
+	# Stop the head from rotating too far up or down
+	$Head.rotation.x = clamp($Head.rotation.x, deg_to_rad(-85), deg_to_rad(90))
 	
 func _physics_process(delta):
 	process_input()
@@ -61,6 +62,8 @@ func process_input():
 	elif Input.is_action_pressed("right"):
 		direction += transform.basis.x
 		
+	if Input.is_action_just_pressed("crouching"):
+		toggle_crouch()
 	# Jumping
 	wish_jump = Input.is_action_just_pressed("jump")
 	
@@ -119,6 +122,17 @@ func update_velocity_ground(wish_dir: Vector3, delta):
 func update_velocity_air(wish_dir: Vector3, delta):
 	# Do not apply any friction
 	return accelerate(wish_dir, MAX_VELOCITY_AIR, delta)
+
+func toggle_crouch():
+	if !crouched:
+		crouched = true
+		$CollisionShape.disabled = true
+		$CollisionShapeCrouched.disabled = false
+		
+	else:
+		crouched = false
+		$CollisionShape.disabled = false
+		$CollisionShapeCrouched.disabled = true
 
 
 func _on_plug_plugged():
