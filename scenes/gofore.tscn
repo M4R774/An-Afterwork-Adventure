@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://ccgkg3kymlb6d"]
+[gd_scene load_steps=34 format=3 uid="uid://ccgkg3kymlb6d"]
 
 [ext_resource type="PackedScene" uid="uid://dx5184jxv6hi3" path="res://scenes/Player.tscn" id="1_12c77"]
 [ext_resource type="Texture2D" uid="uid://dhjipjt4l0tfr" path="res://2d art/dji_fly_20230930_225748_583_1696103973784_pano.jpg" id="2_4y7rl"]
@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://bt2xryd8kw7f4" path="res://scans/gofore_tvroom.glb" id="12_5wbr2"]
 [ext_resource type="PackedScene" uid="uid://twmg5vnvyo53" path="res://scans/gofore_room_end.glb" id="13_bblj7"]
 [ext_resource type="PackedScene" uid="uid://bxrj1c4quvqjy" path="res://scans/gofore_downstairs.glb" id="14_upyxi"]
+[ext_resource type="Script" path="res://scripts/keycard.gd" id="15_2vmun"]
+[ext_resource type="PackedScene" uid="uid://fgbrl02tqy2w" path="res://3d art/keycard.glb" id="15_rx28t"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_fkdfo"]
 _surfaces = [{
@@ -105,6 +107,9 @@ albedo_color = Color(1, 0.321569, 1, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_oc4ot"]
 size = Vector3(0.118811, 0.0978177, 0.162223)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_p8dry"]
+size = Vector3(0.208092, 0.156309, 0.428646)
+
 [node name="gofore" type="Node3D"]
 
 [node name="TBLoader" type="TBLoader" parent="."]
@@ -115,7 +120,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1, -2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.41891, 0.575545, -2.13618)
 
 [node name="entity_0_geometry" type="MeshInstance3D" parent="TBLoader/Default Layer"]
-visible = false
 mesh = SubResource("ArrayMesh_fkdfo")
 
 [node name="entity_0_geometry_col" type="StaticBody3D" parent="TBLoader/Default Layer"]
@@ -300,6 +304,18 @@ transform = Transform3D(0.0733817, 0, 2.84217e-14, 0, 1, 0, -2.11307e-15, 0, 1.5
 
 [node name="gofore_downstairs" parent="." instance=ExtResource("14_upyxi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.64047, -3.64592, -11.3653)
+
+[node name="keycard" type="StaticBody3D" parent="gofore_downstairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.250494, 0.52063, 0.317508)
+collision_layer = 2
+script = ExtResource("15_2vmun")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gofore_downstairs/keycard"]
+transform = Transform3D(0.939657, 0, 0.342119, 0, 1, 0, -0.342119, 0, 0.939657, -0.0236931, 0, -0.101283)
+shape = SubResource("BoxShape3D_p8dry")
+
+[node name="keycard" parent="gofore_downstairs/keycard" instance=ExtResource("15_rx28t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.250494, -0.52063, -0.317508)
 
 [connection signal="electricity_changed" from="gofore_0/door_cable/plug" to="gofore_0/gofore_o_door" method="_on_plug_electricity_changed"]
 

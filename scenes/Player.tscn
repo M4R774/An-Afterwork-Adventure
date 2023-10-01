@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dx5184jxv6hi3"]
+[gd_scene load_steps=8 format=3 uid="uid://dx5184jxv6hi3"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/InteractionManager.gd" id="2_0264i"]
 [ext_resource type="PackedScene" uid="uid://kgvd2rvm0pix" path="res://3d art/hand.glb" id="3_jvhej"]
 [ext_resource type="Script" path="res://keypad/scenes/player/Interaction.gd" id="4_71ge0"]
+[ext_resource type="Script" path="res://scripts/Inventory.gd" id="5_j8ed5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vti54"]
 height = 1.7
@@ -84,5 +85,8 @@ theme_override_font_sizes/font_size = 40
 text = "Press E to interact with name"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Inventory" type="Node" parent="."]
+script = ExtResource("5_j8ed5")
 
 [editable path="Head/Camera/hand"]
