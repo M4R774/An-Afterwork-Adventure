@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://ccgkg3kymlb6d"]
+[gd_scene load_steps=43 format=3 uid="uid://ccgkg3kymlb6d"]
 
 [ext_resource type="PackedScene" uid="uid://dx5184jxv6hi3" path="res://scenes/Player.tscn" id="1_12c77"]
 [ext_resource type="Texture2D" uid="uid://dhjipjt4l0tfr" path="res://2d art/dji_fly_20230930_225748_583_1696103973784_pano.jpg" id="2_4y7rl"]
@@ -14,10 +14,12 @@
 [ext_resource type="PackedScene" uid="uid://bt2xryd8kw7f4" path="res://scans/gofore_tvroom.glb" id="12_5wbr2"]
 [ext_resource type="PackedScene" uid="uid://twmg5vnvyo53" path="res://scans/gofore_room_end.glb" id="13_bblj7"]
 [ext_resource type="Script" path="res://scripts/whiteboard.gd" id="13_eo8ok"]
-[ext_resource type="PackedScene" path="res://3d art/whiteboard.glb" id="13_yopid"]
+[ext_resource type="PackedScene" uid="uid://hkys6umsiflr" path="res://3d art/whiteboard.glb" id="13_yopid"]
 [ext_resource type="PackedScene" uid="uid://bxrj1c4quvqjy" path="res://scans/gofore_downstairs.glb" id="14_upyxi"]
 [ext_resource type="Script" path="res://scripts/keycard.gd" id="15_2vmun"]
+[ext_resource type="Material" uid="uid://xm5lm73erdlu" path="res://textures/unwiped_material.tres" id="15_4hchx"]
 [ext_resource type="PackedScene" uid="uid://fgbrl02tqy2w" path="res://3d art/keycard.glb" id="15_rx28t"]
+[ext_resource type="Material" uid="uid://b8p7hutgl0g71" path="res://textures/wiped_material.tres" id="16_mkwpn"]
 [ext_resource type="PackedScene" uid="uid://hq6h0lejmjyh" path="res://scenes/keyboard.tscn" id="17_1x7nr"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_fkdfo"]
@@ -112,6 +114,67 @@ size = Vector3(0.118811, 0.0978177, 0.162223)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5fkmk"]
 size = Vector3(1.61751, 1.85874, 0.178473)
+
+[sub_resource type="Animation" id="Animation_u3cwi"]
+resource_name = "wipe"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("whiteboard/mesh_007:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.2, 1.8, 2.5),
+"transitions": PackedFloat32Array(0.615572, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.600067, 0.84412, 0.0571144), Vector3(-0.28142, 1.47807, 0.0761747), Vector3(-0.11975, 1.03658, 0.0549259), Vector3(0.286492, 1.49598, 0.0858679), Vector3(0.384013, 1.07932, 0.074295)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("whiteboard/whiteboard2:surface_material_override/0")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("15_4hchx"), ExtResource("16_mkwpn")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:collision_layer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 1]
+}
+
+[sub_resource type="Animation" id="Animation_ulqrx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("whiteboard/mesh_007:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.600067, 0.84412, 0.0571144)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4p5hn"]
+_data = {
+"RESET": SubResource("Animation_ulqrx"),
+"wipe": SubResource("Animation_u3cwi")
+}
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_p8dry"]
 size = Vector3(0.208092, 0.156309, 0.428646)
@@ -310,9 +373,20 @@ script = ExtResource("13_eo8ok")
 [node name="whiteboard" parent="gofore_tvroom/whiteboard" instance=ExtResource("13_yopid")]
 transform = Transform3D(1, 0, 9.63569e-09, 0, 1, 0, -3.23766e-10, 0, 1, 0, 0, 0)
 
+[node name="whiteboard2" parent="gofore_tvroom/whiteboard/whiteboard" index="0"]
+surface_material_override/0 = ExtResource("15_4hchx")
+
+[node name="mesh_007" parent="gofore_tvroom/whiteboard/whiteboard" index="1"]
+transform = Transform3D(0.772486, 0.0635079, 0.631848, 0.63503, -0.0748937, -0.768848, -0.00150616, 0.995166, -0.0981835, -0.600067, 0.84412, 0.0571144)
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="gofore_tvroom/whiteboard"]
 transform = Transform3D(1, 0, 9.63569e-09, 0, 1, 0, -3.23766e-10, 0, 1, 0, 1.03337, 0.0326643)
 shape = SubResource("BoxShape3D_5fkmk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="gofore_tvroom/whiteboard"]
+libraries = {
+"": SubResource("AnimationLibrary_4p5hn")
+}
 
 [node name="gofore_room_end" parent="." instance=ExtResource("13_bblj7")]
 transform = Transform3D(3.47302e-08, 0, 1, 0, 1, 0, -1, 0, 2.3859e-08, -5.81287, 0, -6.14435)

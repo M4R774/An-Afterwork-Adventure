@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://xm5lm73erdlu"]
+
+[ext_resource type="Texture2D" uid="uid://dve6yn5qb4cdo" path="res://3d art/whiteboard_flap_board.png" id="1_vdo5c"]
+
+[resource]
+albedo_texture = ExtResource("1_vdo5c")
+metallic_specular = 0.0

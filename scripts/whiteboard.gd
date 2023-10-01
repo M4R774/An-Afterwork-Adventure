@@ -10,5 +10,4 @@ func get_interaction_text():
 
 
 func interact():
-	$whiteboard/whiteboard2.set_surface_override_material(0, wiped_material)
-	self.collision_layer = 1
+	$AnimationPlayer.play("wipe")
