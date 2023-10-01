@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://ccgkg3kymlb6d"]
+[gd_scene load_steps=56 format=3 uid="uid://ccgkg3kymlb6d"]
 
 [ext_resource type="PackedScene" uid="uid://dx5184jxv6hi3" path="res://scenes/Player.tscn" id="1_12c77"]
 [ext_resource type="Texture2D" uid="uid://dhjipjt4l0tfr" path="res://2d art/dji_fly_20230930_225748_583_1696103973784_pano.jpg" id="2_4y7rl"]
@@ -23,6 +23,8 @@
 [ext_resource type="PackedScene" uid="uid://hq6h0lejmjyh" path="res://scenes/keyboard.tscn" id="17_1x7nr"]
 [ext_resource type="PackedScene" uid="uid://fg5sus138qia" path="res://keypad/scenes/keypad/Keypad.tscn" id="18_1djir"]
 [ext_resource type="Script" path="res://keypad/scenes/door/Door.gd" id="18_a8o7l"]
+[ext_resource type="PackedScene" uid="uid://bxwpoajh7ekrn" path="res://3d art/door.glb" id="19_qp7b6"]
+[ext_resource type="Material" uid="uid://bbupq6mayivnv" path="res://materials/orange.tres" id="20_rynfh"]
 
 [sub_resource type="Animation" id="Animation_lfpxx"]
 length = 0.001
@@ -221,9 +223,6 @@ _data = {
 [sub_resource type="BoxShape3D" id="3"]
 size = Vector3(1.36, 2, 0.0824622)
 
-[sub_resource type="BoxMesh" id="1"]
-size = Vector3(1.36, 2, 0.1)
-
 [sub_resource type="Animation" id="Animation_ggctk"]
 length = 0.001
 tracks/0/type = "value"
@@ -259,6 +258,9 @@ _data = {
 "RESET": SubResource("Animation_ggctk"),
 "door_open": SubResource("Animation_srsa4")
 }
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_sc1n0"]
+viewport_path = NodePath("PasswordViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_p8dry"]
 size = Vector3(0.208092, 0.156309, 0.428646)
@@ -497,10 +499,12 @@ script = ExtResource("18_a8o7l")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.676576, 0, 0)
 shape = SubResource("3")
 
-[node name="MeshInstance" type="MeshInstance3D" parent="gofore_room_end/Door/CollisionShape"]
-transform = Transform3D(0.687697, 8.89613e-25, 0, -1.37773e-23, 1, 0, 0, 0, 1, 0.213881, 0, 0)
-mesh = SubResource("1")
-skeleton = NodePath("../..")
+[node name="door" parent="gofore_room_end/Door/CollisionShape" instance=ExtResource("19_qp7b6")]
+transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, -3.48787e-16, 1, -3.48787e-16, -1, -3.48787e-16, -4.37114e-08, 0.821649, -1.13267, -2.67179)
+
+[node name="door2" parent="gofore_room_end/Door/CollisionShape/door" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, -9.02602e-31, 0, -2.03589e-30, 1, 0, 0, 0)
+surface_material_override/0 = ExtResource("20_rynfh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="gofore_room_end/Door"]
 libraries = {
@@ -511,6 +515,13 @@ libraries = {
 transform = Transform3D(-4.37114e-08, -3.48787e-16, -1, -3.48787e-16, 1, -3.48787e-16, 1, 3.48787e-16, -4.37114e-08, -2.4569, 1.39092, -1.28681)
 correct_password = "8526"
 door = NodePath("../Door")
+
+[node name="MeshInstance" parent="gofore_room_end/Keypad" index="3"]
+transform = Transform3D(1, 8.89624e-25, 0, -2.9021e-24, 1, 0, 0, 0, 1, 0.000984192, 0.00120187, 0.0148263)
+surface_material_override/0 = ExtResource("20_rynfh")
+
+[node name="Sprite3D" parent="gofore_room_end/Keypad" index="5"]
+texture = SubResource("ViewportTexture_sc1n0")
 
 [node name="gofore_downstairs" parent="." instance=ExtResource("14_upyxi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.64047, -3.64592, -11.3653)
@@ -537,3 +548,5 @@ transform = Transform3D(-0.877037, 0, -0.480422, 0, 1, 0, 0.480422, 0, -0.877037
 [editable path="gofore_0/door_cable/plug"]
 [editable path="gofore_tvroom/whiteboard/whiteboard"]
 [editable path="gofore_room_end"]
+[editable path="gofore_room_end/Door/CollisionShape/door"]
+[editable path="gofore_room_end/Keypad"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://fg5sus138qia"]
+[gd_scene load_steps=11 format=3 uid="uid://fg5sus138qia"]
 
 [ext_resource type="PackedScene" uid="uid://bds4csqlvb1la" path="res://keypad/scenes/keypad/KeypadButton.tscn" id="1"]
 [ext_resource type="Script" path="res://keypad/scenes/keypad/Keypad.gd" id="2"]
@@ -12,6 +12,13 @@ size = Vector3(0.35, 0.55, 0.02)
 
 [sub_resource type="ViewportTexture" id="4"]
 viewport_path = NodePath("PasswordViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cb2xs"]
+albedo_color = Color(0, 0, 0, 1)
+metallic_specular = 0.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_yfiq8"]
+material = SubResource("StandardMaterial3D_cb2xs")
 
 [node name="Keypad" type="Node3D"]
 transform = Transform3D(1, -3.48787e-16, 3.48787e-16, 3.48787e-16, 1, -3.48787e-16, -3.48787e-16, 3.48787e-16, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
@@ -88,23 +95,20 @@ transform = Transform3D(0.1, -3.48787e-17, 8.74228e-09, -3.48787e-17, -0.1, 3.48
 flip_h = true
 texture = ExtResource("3")
 
-[node name="PasswordViewport" type="SubViewport" parent="."]
-transparent_bg = true
-size = Vector2i(40, 18)
-
-[node name="Panel" type="Panel" parent="PasswordViewport"]
-
-[node name="PasswordLabel" type="Label" parent="PasswordViewport"]
-offset_top = 21.0
-offset_right = 37.0
-offset_bottom = 47.0
-scale = Vector2(1, -1)
-text = "1234"
-
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.216, 0.00218582)
 flip_h = true
 flip_v = true
 texture = SubResource("4")
+
+[node name="KeyCodeScreen" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.132375, 0, 7.4337e-25, -3.31498e-25, -4.37114e-08, 0.0487584, 0, -1, -2.1313e-09, 0, 0.213377, 0.00215549)
+mesh = SubResource("PlaneMesh_yfiq8")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(-1, -1.21652e-31, -8.74228e-08, 4.02215e-24, 1, 0, 8.74228e-08, 0, -1, 0, 0.218459, 0)
+text = "1234"
+font_size = 18
+outline_size = 0
 
 [connection signal="finished" from="PressedAudioStream" to="." method="_on_AudioStreamPlayer3D_finished"]

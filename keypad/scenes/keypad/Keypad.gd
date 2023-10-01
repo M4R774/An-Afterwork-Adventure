@@ -10,7 +10,7 @@ var password = ""
 @onready var correct_audio = $CorrectAudioStream
 @onready var wrong_audio = $WrongAudioStream
 @onready var keys = $Keys
-@onready var password_label = $PasswordViewport/PasswordLabel
+@onready var password_label = $Label3D
 
 signal on_correct_password
 signal on_wrong_password
