@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://csylvg25d888c"]
 
-[ext_resource type="Script" path="res://radio_transmitter.gd" id="1_1axa6"]
-[ext_resource type="Script" path="res://extension.gd" id="2_510f5"]
+[ext_resource type="Script" path="res://scripts/radio_transmitter.gd" id="1_1axa6"]
+[ext_resource type="Script" path="res://scripts/extension.gd" id="2_510f5"]
 [ext_resource type="Script" path="res://addons/Rope3D/Rope3D.gd" id="2_caup0"]
 [ext_resource type="PackedScene" uid="uid://xgl3pexbidre" path="res://scenes/plug.tscn" id="3_kebvf"]
 [ext_resource type="PackedScene" uid="uid://c3m86jo3otkft" path="res://3d art/transmitter.glb" id="4_k2c00"]
