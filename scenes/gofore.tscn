@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://ccgkg3kymlb6d"]
+[gd_scene load_steps=35 format=3 uid="uid://ccgkg3kymlb6d"]
 
 [ext_resource type="PackedScene" uid="uid://dx5184jxv6hi3" path="res://scenes/Player.tscn" id="1_12c77"]
 [ext_resource type="Texture2D" uid="uid://dhjipjt4l0tfr" path="res://2d art/dji_fly_20230930_225748_583_1696103973784_pano.jpg" id="2_4y7rl"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bxrj1c4quvqjy" path="res://scans/gofore_downstairs.glb" id="14_upyxi"]
 [ext_resource type="Script" path="res://scripts/keycard.gd" id="15_2vmun"]
 [ext_resource type="PackedScene" uid="uid://fgbrl02tqy2w" path="res://3d art/keycard.glb" id="15_rx28t"]
+[ext_resource type="PackedScene" uid="uid://hq6h0lejmjyh" path="res://scenes/keyboard.tscn" id="17_1x7nr"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_fkdfo"]
 _surfaces = [{
@@ -316,6 +317,9 @@ shape = SubResource("BoxShape3D_p8dry")
 
 [node name="keycard" parent="gofore_downstairs/keycard" instance=ExtResource("15_rx28t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.250494, -0.52063, -0.317508)
+
+[node name="Keyboard" parent="." instance=ExtResource("17_1x7nr")]
+transform = Transform3D(0.481494, 0, 0.87645, 0, 1, 0, -0.87645, 0, 0.481494, -2.56165, 0.924537, -5.78579)
 
 [connection signal="electricity_changed" from="gofore_0/door_cable/plug" to="gofore_0/gofore_o_door" method="_on_plug_electricity_changed"]
 

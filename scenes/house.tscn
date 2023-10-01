@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bdkgacenuhs4q"]
+[gd_scene load_steps=24 format=3 uid="uid://bdkgacenuhs4q"]
 
 [ext_resource type="Texture2D" uid="uid://cyxifj8oou7md" path="res://2d art/dji_fly_20230812_204504_574_1691862362693_pano.jpg" id="1_giirg"]
 [ext_resource type="PackedScene" uid="uid://dx5184jxv6hi3" path="res://scenes/Player.tscn" id="1_ips0s"]
@@ -14,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://dthrs460g5dyk" path="res://2d art/input.png" id="11_56hc1"]
 [ext_resource type="PackedScene" uid="uid://bhwdjuocaxtjv" path="res://keypad/scenes/door/Door.tscn" id="13_cgwom"]
 [ext_resource type="PackedScene" uid="uid://fg5sus138qia" path="res://keypad/scenes/keypad/Keypad.tscn" id="14_rcjnl"]
-[ext_resource type="PackedScene" uid="uid://hq6h0lejmjyh" path="res://scenes/keyboard.tscn" id="15_n23yc"]
 [ext_resource type="Script" path="res://scripts/Goal.gd" id="16_rhviy"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ntudf"]
@@ -144,9 +143,6 @@ transform = Transform3D(1, -3.48787e-16, 3.48787e-16, 3.48787e-16, 1, -3.48787e-
 [node name="Keypad" parent="." node_paths=PackedStringArray("door") instance=ExtResource("14_rcjnl")]
 transform = Transform3D(1, -3.48787e-16, 3.48787e-16, 3.48787e-16, 1, -3.48787e-16, -3.48787e-16, 3.48787e-16, 1, 1.97646, 2.27541, 8.73723)
 door = NodePath("../Door")
-
-[node name="Node3D" parent="." instance=ExtResource("15_n23yc")]
-transform = Transform3D(0.5, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 5.61005, 1.75005, 3.11127)
 
 [node name="Goal" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3314, 1.69868, -2.15382)
