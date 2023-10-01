@@ -17,7 +17,7 @@ func _ready():
 func get_highscore():
 	if START_TIME == null:
 		return null
-	return START_TIME - Time.get_ticks_msec()
+	return (START_TIME - Time.get_ticks_msec()) / 1000
 
 
 func score_is_high_enough_for_local_leaderboard(score):
@@ -27,9 +27,9 @@ func score_is_high_enough_for_local_leaderboard(score):
 		return false
 
 
-func add_new_local_highscore():
-	if score_is_high_enough_for_local_leaderboard(get_highscore()):
-		LOCAL_HIGHSCORES.append({"name": PLAYER_NAME, "score":get_highscore()})
+func add_new_local_highscore(new_score):
+	if score_is_high_enough_for_local_leaderboard(new_score):
+		LOCAL_HIGHSCORES.append({"name": PLAYER_NAME, "score":new_score})
 	LOCAL_HIGHSCORES.sort_custom(Callable(self,"customPlayerComparison"))
 	if LOCAL_HIGHSCORES.size() > 10:
 		LOCAL_HIGHSCORES.pop_back()

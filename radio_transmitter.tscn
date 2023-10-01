@@ -20,7 +20,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52265, 0.258849, -0.701001
 
 [node name="extension" type="RigidBody3D" parent="plug_with_cable" groups=["pickup"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32634, 0, -0.647551)
-collision_layer = 16
+collision_layer = 18
 script = ExtResource("2_510f5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="plug_with_cable/extension"]

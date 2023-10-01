@@ -1,6 +1,5 @@
 extends RigidBody3D
 
-
 var is_in_hand = false
 var hand
 
@@ -22,3 +21,11 @@ func pick_up(hand_object):
 func drop():
 	is_in_hand = false
 	freeze = false
+
+# overriden in child
+func get_interaction_text():
+	return "pick up radio transmitter"
+
+# overriden in child
+func interact():
+	print("interacted with ", name)

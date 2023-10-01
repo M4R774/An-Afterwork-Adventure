@@ -15,9 +15,10 @@ extends Control
 
 var http_client = HTTPClient.new()
 var back_end_url = ""
-
+var score
 
 func _ready():
+	score = HIGHSCORE_SINGLETON.get_highscore()
 	back_end_url = "https://" + SECRETS.DOMAIN + "/highscores/" + HIGHSCORE_SINGLETON.GAME_NAME
 	playername_prompt.visible = false
 	to_main_menu.grab_focus()
@@ -38,32 +39,35 @@ func update_highscores_table():
 func update_local_highscores_table():
 	var local_highscores_text_content = ""
 	for player in HIGHSCORE_SINGLETON.LOCAL_HIGHSCORES:
-		local_highscores_text_content += ("%-21s" % player["name"] + str(player["score"]) + "\n")
+		if player["score"] == null:
+			local_highscores_text_content += ("%-21s" % player["name"] + str(player["score"]) + "\n")
+		else:
+			local_highscores_text_content += ("%-21s" % player["name"] + str(abs(player["score"])) + "\n")
 	local_highscores_text.text = local_highscores_text_content
 
 
 func _on_get_highscores_request_completed(_result, response_code, _headers, body):
 	var response_body = body.get_string_from_utf8()
 	if response_code == 200:
-		online_highscores_text.text = response_body
+		online_highscores_text.text = response_body.replace("-", "")
 	else:
 		online_highscores_text.text = "High score server is currently unavailable."
 	loading_icon.visible = false
 
 
 func check_if_players_score_is_high_enough():
-	if HIGHSCORE_SINGLETON.get_highscore() == null:
+	if score == null:
 		return
 
 	# Offline
-	if HIGHSCORE_SINGLETON.score_is_high_enough_for_local_leaderboard(HIGHSCORE_SINGLETON.get_highscore()):
+	if HIGHSCORE_SINGLETON.score_is_high_enough_for_local_leaderboard(score):
 		ask_for_players_name()
 	else:
 		# Online
 		var request = HTTPRequest.new()
 		add_child(request)
 		request.connect("request_completed",Callable(self,"_on_check_if_high_enough_request_completed"))
-		request.request(back_end_url + "?score=" + str(HIGHSCORE_SINGLETON.get_highscore()))
+		request.request(back_end_url + "?score=" + str(score))
 
 
 func _on_check_if_high_enough_request_completed(_result, _response_code, _headers, body):
@@ -80,10 +84,10 @@ func ask_for_players_name():
 
 
 func post_highscores_online():
-	HIGHSCORE_SINGLETON.add_new_local_highscore()
+	HIGHSCORE_SINGLETON.add_new_local_highscore(score)
 	update_local_highscores_table()
 	loading_icon.visible = true
-	var payload_dict = {"name":HIGHSCORE_SINGLETON.PLAYER_NAME, "score":HIGHSCORE_SINGLETON.get_highscore()}
+	var payload_dict = {"name":HIGHSCORE_SINGLETON.PLAYER_NAME, "score":score}
 	var body = http_client.query_string_from_dict(payload_dict)
 	var auth=str("Basic ",
 			Marshalls.utf8_to_base64(
@@ -95,6 +99,7 @@ func post_highscores_online():
 	add_child(request)
 	request.connect("request_completed",Callable(self,"_on_post_highscores_request_completed"))
 	request.request(back_end_url, headers, 2, body)
+	score = null
 	HIGHSCORE_SINGLETON.SCORE = null
 	HIGHSCORE_SINGLETON.START_TIME = null
 	to_main_menu.grab_focus()

@@ -137,3 +137,12 @@ func _on_area_3d_body_exited(body):
 		own_sockets.erase(body)
 		if body.is_energy_source:
 			change_electricity(false)
+
+
+# overriden in child
+func get_interaction_text():
+	return "pick up plug"
+
+# overriden in child
+func interact():
+	print("interacted with ", name)
