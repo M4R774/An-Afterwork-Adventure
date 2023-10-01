@@ -48,3 +48,8 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		state = STATE.CLOSED
 	else:
 		state = STATE.OPEN
+
+
+
+func _on_plug_electricity_changed():
+	pass # Replace with function body.

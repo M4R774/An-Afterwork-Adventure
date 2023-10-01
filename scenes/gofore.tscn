@@ -1,7 +1,8 @@
-[gd_scene load_steps=43 format=3 uid="uid://ccgkg3kymlb6d"]
+[gd_scene load_steps=54 format=3 uid="uid://ccgkg3kymlb6d"]
 
 [ext_resource type="PackedScene" uid="uid://dx5184jxv6hi3" path="res://scenes/Player.tscn" id="1_12c77"]
 [ext_resource type="Texture2D" uid="uid://dhjipjt4l0tfr" path="res://2d art/dji_fly_20230930_225748_583_1696103973784_pano.jpg" id="2_4y7rl"]
+[ext_resource type="Script" path="res://scripts/puzzle 1/door.gd" id="4_j1f8q"]
 [ext_resource type="Script" path="res://addons/Rope3D/Rope3D.gd" id="5_4fnqn"]
 [ext_resource type="PackedScene" uid="uid://xgl3pexbidre" path="res://scenes/plug.tscn" id="6_06tkc"]
 [ext_resource type="PackedScene" uid="uid://cxwr5qkl5tmtl" path="res://3d art/extension_cable.glb" id="7_8tbj6"]
@@ -20,7 +21,8 @@
 [ext_resource type="PackedScene" uid="uid://fgbrl02tqy2w" path="res://3d art/keycard.glb" id="15_rx28t"]
 [ext_resource type="Material" uid="uid://b8p7hutgl0g71" path="res://textures/wiped_material.tres" id="16_mkwpn"]
 [ext_resource type="PackedScene" uid="uid://hq6h0lejmjyh" path="res://scenes/keyboard.tscn" id="17_1x7nr"]
-[ext_resource type="PackedScene" uid="uid://bjmhnctpfd7jh" path="res://scenes/plug_with_cable.tscn" id="22_cbpwn"]
+[ext_resource type="PackedScene" uid="uid://fg5sus138qia" path="res://keypad/scenes/keypad/Keypad.tscn" id="18_1djir"]
+[ext_resource type="Script" path="res://keypad/scenes/door/Door.gd" id="18_a8o7l"]
 
 [sub_resource type="Animation" id="Animation_lfpxx"]
 length = 0.001
@@ -90,6 +92,46 @@ sky = SubResource("Sky_0qclq")
 ambient_light_source = 2
 ambient_light_color = Color(0.827451, 0.827451, 0.827451, 1)
 ssao_enabled = true
+
+[sub_resource type="Animation" id="Animation_uc0w1"]
+resource_name = "open_door"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(0.659754, 3.24901),
+"update": 0,
+"values": [Vector3(-1.68993, 0, 0.648053), Vector3(-1.68993, 0, -1.42673)]
+}
+
+[sub_resource type="Animation" id="Animation_yah5t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.68993, 0, 0.648053)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vg1jq"]
+_data = {
+"RESET": SubResource("Animation_yah5t"),
+"open_door": SubResource("Animation_uc0w1")
+}
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_n6hme"]
+data = PackedVector3Array(-0.0721, -0.0055, 1, -0.0721, 2.465, -1, -0.0721, 2.465, 1, -0.0721, -0.0055, 1, -0.0721, -0.0055, -1, -0.0721, 2.465, -1, -0.0721, -0.0055, -1, 0.0721, 2.465, -1, -0.0721, 2.465, -1, -0.0721, -0.0055, -1, 0.0721, -0.0055, -1, 0.0721, 2.465, -1, 0.0721, -0.0055, -1, 0.0721, 2.465, 1, 0.0721, 2.465, -1, 0.0721, -0.0055, -1, 0.0721, -0.0055, 1, 0.0721, 2.465, 1, 0.0721, -0.0055, 1, -0.0721, 2.465, 1, 0.0721, 2.465, 1, 0.0721, -0.0055, 1, -0.0721, -0.0055, 1, -0.0721, 2.465, 1, -0.0721, -0.0055, -1, 0.0721, -0.0055, 1, 0.0721, -0.0055, -1, -0.0721, -0.0055, -1, -0.0721, -0.0055, 1, 0.0721, -0.0055, 1, 0.0721, 2.465, -1, -0.0721, 2.465, 1, -0.0721, 2.465, -1, 0.0721, 2.465, -1, 0.0721, 2.465, 1, -0.0721, 2.465, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s8v4a"]
 size = Vector3(0.12136, 0.101992, 0.134236)
@@ -176,6 +218,48 @@ _data = {
 "wipe": SubResource("Animation_u3cwi")
 }
 
+[sub_resource type="BoxShape3D" id="3"]
+size = Vector3(1.36, 2, 0.0824622)
+
+[sub_resource type="BoxMesh" id="1"]
+size = Vector3(1.36, 2, 0.1)
+
+[sub_resource type="Animation" id="Animation_ggctk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3.48787e-16, -1.5708, 3.48787e-16)]
+}
+
+[sub_resource type="Animation" id="Animation_srsa4"]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(3.48787e-16, -1.5708, 3.48787e-16), Vector3(4.90865e-16, 0.484381, -4.85363e-17)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eyxqa"]
+_data = {
+"RESET": SubResource("Animation_ggctk"),
+"door_open": SubResource("Animation_srsa4")
+}
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_p8dry"]
 size = Vector3(0.208092, 0.156309, 0.428646)
 
@@ -217,6 +301,19 @@ environment = SubResource("Environment_ob0n4")
 
 [node name="gofore_0" parent="." instance=ExtResource("9_4qgbe")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.826956, 0.0135825, -0.668772)
+
+[node name="gofore_o_door" parent="gofore_0" index="0"]
+script = ExtResource("4_j1f8q")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="gofore_0/gofore_o_door" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_vg1jq")
+}
+
+[node name="StaticBody3D" type="StaticBody3D" parent="gofore_0/gofore_o_door" index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gofore_0/gofore_o_door/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_n6hme")
 
 [node name="door_cable" type="Node3D" parent="gofore_0"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.22051, 0.0761226, 2.28936)
@@ -361,7 +458,7 @@ texture = ExtResource("9_8ulo6")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.50754, -2.75988, -0.935462)
 
 [node name="gofore_tvroom" parent="." instance=ExtResource("12_5wbr2")]
-transform = Transform3D(0.0305733, 0, 0.999533, 0, 1, 0, -0.999533, 0, 0.0305734, -0.997437, 1.68386, -5.34643)
+transform = Transform3D(0.0305733, 0, 0.999533, 0, 1, 0, -0.999533, 0, 0.0305734, -0.997437, 1.61265, -5.34643)
 
 [node name="whiteboard" type="StaticBody3D" parent="gofore_tvroom"]
 transform = Transform3D(0.594612, 0, -0.804013, 0, 1, 0, 0.804012, 0, 0.594612, 2.01338, -1.66439, -2.71192)
@@ -392,6 +489,29 @@ transform = Transform3D(3.47302e-08, 0, 1, 0, 1, 0, -1, 0, 2.3859e-08, -5.81287,
 [node name="green_wall" parent="gofore_room_end" index="4"]
 transform = Transform3D(0.0733817, 0, 2.84217e-14, 0, 1, 0, -2.11307e-15, 0, 1.55798, -2.64386, 0.978184, -2.64662)
 
+[node name="Door" type="StaticBody3D" parent="gofore_room_end"]
+transform = Transform3D(-4.37114e-08, -3.48787e-16, -1, 3.48787e-16, 1, -3.48787e-16, 1, -3.48787e-16, -4.37114e-08, -2.67179, 1.13267, -0.145073)
+script = ExtResource("18_a8o7l")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="gofore_room_end/Door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.676576, 0, 0)
+shape = SubResource("3")
+
+[node name="MeshInstance" type="MeshInstance3D" parent="gofore_room_end/Door/CollisionShape"]
+transform = Transform3D(0.687697, 8.89613e-25, 0, -1.37773e-23, 1, 0, 0, 0, 1, 0.213881, 0, 0)
+mesh = SubResource("1")
+skeleton = NodePath("../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="gofore_room_end/Door"]
+libraries = {
+"": SubResource("AnimationLibrary_eyxqa")
+}
+
+[node name="Keypad" parent="gofore_room_end" node_paths=PackedStringArray("door") instance=ExtResource("18_1djir")]
+transform = Transform3D(-4.37114e-08, -3.48787e-16, -1, -3.48787e-16, 1, -3.48787e-16, 1, 3.48787e-16, -4.37114e-08, -2.4569, 1.39092, -1.28681)
+correct_password = "8526"
+door = NodePath("../Door")
+
 [node name="gofore_downstairs" parent="." instance=ExtResource("14_upyxi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.64047, -3.64592, -11.3653)
 
@@ -408,10 +528,10 @@ shape = SubResource("BoxShape3D_p8dry")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.250494, -0.52063, -0.317508)
 
 [node name="Keyboard" parent="." instance=ExtResource("17_1x7nr")]
-transform = Transform3D(-0.877037, 0, -0.480422, 0, 1, 0, 0.480422, 0, -0.877037, 2.37765, 0.924537, -0.476047)
+transform = Transform3D(-0.877037, 0, -0.480422, 0, 1, 0, 0.480422, 0, -0.877037, 2.37765, 0.788661, -0.476047)
 
-[node name="plug_with_cable" parent="." instance=ExtResource("22_cbpwn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83255, 0.66476, -5.73171)
+[connection signal="electricity_changed" from="gofore_0/door_cable/plug" to="gofore_0/gofore_o_door" method="_on_plug_electricity_changed"]
+[connection signal="animation_finished" from="gofore_room_end/Door/AnimationPlayer" to="gofore_room_end/Door" method="_on_AnimationPlayer_animation_finished" flags=18]
 
 [editable path="gofore_0"]
 [editable path="gofore_0/door_cable/plug"]
