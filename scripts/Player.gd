@@ -46,6 +46,8 @@ func _handle_camera_rotation(event: InputEvent):
 	$Head.rotation.x = clamp($Head.rotation.x, deg_to_rad(-85), deg_to_rad(90))
 	
 func _physics_process(delta):
+	if position.y < -20:
+		var _result = get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 	process_input()
 	process_movement(delta)
 	
