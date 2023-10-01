@@ -52,18 +52,18 @@ func _on_get_highscores_request_completed(_result, response_code, _headers, body
 
 
 func check_if_players_score_is_high_enough():
-	if HIGHSCORE_SINGLETON.SCORE == null:
+	if HIGHSCORE_SINGLETON.get_highscore() == null:
 		return
 
 	# Offline
-	if HIGHSCORE_SINGLETON.score_is_high_enough_for_local_leaderboard(HIGHSCORE_SINGLETON.SCORE):
+	if HIGHSCORE_SINGLETON.score_is_high_enough_for_local_leaderboard(HIGHSCORE_SINGLETON.get_highscore()):
 		ask_for_players_name()
 	else:
 		# Online
 		var request = HTTPRequest.new()
 		add_child(request)
 		request.connect("request_completed",Callable(self,"_on_check_if_high_enough_request_completed"))
-		request.request(back_end_url + "?score=" + str(HIGHSCORE_SINGLETON.SCORE))
+		request.request(back_end_url + "?score=" + str(HIGHSCORE_SINGLETON.get_highscore()))
 
 
 func _on_check_if_high_enough_request_completed(_result, _response_code, _headers, body):
@@ -83,7 +83,7 @@ func post_highscores_online():
 	HIGHSCORE_SINGLETON.add_new_local_highscore()
 	update_local_highscores_table()
 	loading_icon.visible = true
-	var payload_dict = {"name":HIGHSCORE_SINGLETON.PLAYER_NAME, "score":HIGHSCORE_SINGLETON.SCORE}
+	var payload_dict = {"name":HIGHSCORE_SINGLETON.PLAYER_NAME, "score":HIGHSCORE_SINGLETON.get_highscore()}
 	var body = http_client.query_string_from_dict(payload_dict)
 	var auth=str("Basic ",
 			Marshalls.utf8_to_base64(
@@ -96,6 +96,7 @@ func post_highscores_online():
 	request.connect("request_completed",Callable(self,"_on_post_highscores_request_completed"))
 	request.request(back_end_url, headers, 2, body)
 	HIGHSCORE_SINGLETON.SCORE = null
+	HIGHSCORE_SINGLETON.START_TIME = null
 	to_main_menu.grab_focus()
 
 

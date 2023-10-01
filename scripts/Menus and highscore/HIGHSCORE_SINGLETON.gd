@@ -2,6 +2,7 @@ extends Node2D
 
 var PLAYER_NAME = null
 var SCORE = null
+var START_TIME = null
 
 var GAME_NAME : String = ""
 var LOCAL_HIGHSCORES : Array = []
@@ -11,6 +12,12 @@ func _ready():
 	load_highscores_from_disk()
 	GAME_NAME = ProjectSettings.get_setting('application/config/name')
 	assert(GAME_NAME != "")
+
+
+func get_highscore():
+	if START_TIME == null:
+		return null
+	return START_TIME - Time.get_ticks_msec()
 
 
 func score_is_high_enough_for_local_leaderboard(score):

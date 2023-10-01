@@ -17,7 +17,11 @@ var walking = false
 # Camera
 var sensitivity = 0.05
 
+# Timekeeping
+var time_start = 0
+
 func _ready():
+	HIGHSCORE_SINGLETON.START_TIME = Time.get_ticks_msec()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	add_to_group("Player")
 	
