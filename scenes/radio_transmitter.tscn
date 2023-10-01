@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://csylvg25d888c"]
+
+[ext_resource type="Script" path="res://radio_transmitter.gd" id="1_1axa6"]
+[ext_resource type="Script" path="res://extension.gd" id="2_510f5"]
+[ext_resource type="Script" path="res://addons/Rope3D/Rope3D.gd" id="2_caup0"]
+[ext_resource type="PackedScene" uid="uid://xgl3pexbidre" path="res://scenes/plug.tscn" id="3_kebvf"]
+[ext_resource type="PackedScene" uid="uid://c3m86jo3otkft" path="res://3d art/transmitter.glb" id="4_k2c00"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s8v4a"]
+size = Vector3(0.354821, 0.177469, 0.539516)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1wepn"]
+albedo_color = Color(1, 0.321569, 1, 1)
+
+[node name="Radio_transmitter" type="Node3D"]
+script = ExtResource("1_1axa6")
+
+[node name="plug_with_cable" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52265, 0.258849, -0.701001)
+
+[node name="extension" type="RigidBody3D" parent="plug_with_cable" groups=["pickup"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32634, 0, -0.647551)
+collision_layer = 18
+script = ExtResource("2_510f5")
+interaction_text = "pick up radio transmitter"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="plug_with_cable/extension"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00691557, 0.0444848, -0.278395)
+shape = SubResource("BoxShape3D_s8v4a")
+
+[node name="RopeEndPoint1" type="Marker3D" parent="plug_with_cable/extension"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00294203, 0)
+
+[node name="Rope3D" type="Node3D" parent="plug_with_cable/extension"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0128538, 0.000706673)
+script = ExtResource("2_caup0")
+width = 0.025
+material = SubResource("StandardMaterial3D_1wepn")
+attached_to = NodePath("../../plug/RopeEndPoint2")
+collision_layer = 16
+
+[node name="transmitter" parent="plug_with_cable/extension" instance=ExtResource("4_k2c00")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.0449837, -0.27979)
+
+[node name="plug" parent="plug_with_cable" instance=ExtResource("3_kebvf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12015, 0, 1.91366)
+
+[connection signal="electricity_changed" from="plug_with_cable/plug" to="." method="_on_plug_electricity_changed"]
+
+[editable path="plug_with_cable/plug"]
