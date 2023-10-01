@@ -8,6 +8,27 @@ var item
 var has_item_in_hand = false
 
 func _physics_process(delta):
+	if Input.is_action_just_released("use"):
+		var space_state = get_world_3d().direct_space_state
+		var mouse_position = get_viewport().get_mouse_position()
+		var raycast_origin = player_camera.project_ray_origin(mouse_position)
+		var raycast_target = raycast_origin + player_camera.project_ray_normal(mouse_position) * ray_length
+		var physicsRaycastQuery = PhysicsRayQueryParameters3D.create(raycast_origin, raycast_target)
+		var raycast_result = space_state.intersect_ray(physicsRaycastQuery)
+		
+		if has_item_in_hand:
+			print("i has item")
+			if raycast_result["collider"].is_in_group("socket"):
+				print("Socket found")
+				if raycast_result["collider"].can_plug_in(item):
+					item.plug_in(raycast_result["collider"])
+					has_item_in_hand = false
+				else:
+					return
+			else:
+				print("Item dropped")
+				item.drop()
+				has_item_in_hand = false
 	if Input.is_action_just_pressed("use"):
 		var space_state = get_world_3d().direct_space_state
 		var mouse_position = get_viewport().get_mouse_position()

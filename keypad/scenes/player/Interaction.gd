@@ -26,8 +26,11 @@ func set_interaction_text(text):
 	if !text:
 		interaction_label.visible = false
 	else:
-		var use_events = InputMap.action_get_events("use")
-		var first_use_event = use_events[0]
-		var button_name = OS.get_keycode_string( first_use_event.physical_keycode ) 
-		interaction_label.text = "Press %s to %s" % [button_name, text]
+		#var use_events = InputMap.action_get_events("use")
+		#var first_use_event = use_events[0]
+		#var button_name
+		#if first_use_event.keycode:
+		#	button_name = OS.get_keycode_string( first_use_event.keycode ) 
+		var button_name = "Left click"
+		interaction_label.text = "%s to %s" % [button_name, text]
 		interaction_label.visible = true
