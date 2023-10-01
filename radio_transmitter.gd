@@ -1,8 +1,14 @@
 extends Node3D
 
+class_name radio_transmitter
+
+@export var radio_receiver: radio = null
+var has_power: bool = false
+
+func _ready():
+	if radio_receiver == null:
+		print("Error: Radio receiver not set!")
 
 func _on_plug_electricity_changed(value):
-	if value:
-		$AnimationPlayer.play("open_door")
-	else:
-		$AnimationPlayer.play_backwards("open_door")
+	has_power = value
+	radio_receiver.radio_transmission_started()

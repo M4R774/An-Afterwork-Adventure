@@ -17,3 +17,8 @@ shape = SubResource("BoxShape3D_8bvpm")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D/CollisionShape3D"]
 mesh = SubResource("BoxMesh_8b1wc")
 skeleton = NodePath("../../..")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00102, 0)
+visible = false
+light_color = Color(0, 1, 0, 1)
