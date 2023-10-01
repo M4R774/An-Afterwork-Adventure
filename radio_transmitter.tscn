@@ -1,10 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://csylvg25d888c"]
+[gd_scene load_steps=4 format=3 uid="uid://csylvg25d888c"]
+
+[ext_resource type="Script" path="res://radio_transmitter.gd" id="1_1axa6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8bvpm"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_8b1wc"]
 
 [node name="Radio_transmitter" type="Node3D"]
+script = ExtResource("1_1axa6")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 
