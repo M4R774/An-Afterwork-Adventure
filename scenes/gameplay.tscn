@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://ccgkg3kymlb6d"]
+[gd_scene load_steps=68 format=3 uid="uid://ccgkg3kymlb6d"]
 
 [ext_resource type="PackedScene" uid="uid://dx5184jxv6hi3" path="res://scenes/Player.tscn" id="2_1eigl"]
 [ext_resource type="Texture2D" uid="uid://dhjipjt4l0tfr" path="res://2d art/dji_fly_20230930_225748_583_1696103973784_pano.jpg" id="3_ou7m1"]
@@ -33,9 +33,6 @@
 [ext_resource type="AudioStream" uid="uid://dwxw365mopu2r" path="res://audio/LimitedSpace01_0_3-_publish.ogg" id="31_iapud"]
 [ext_resource type="PackedScene" uid="uid://csylvg25d888c" path="res://radio_transmitter.tscn" id="32_ryjr6"]
 [ext_resource type="PackedScene" uid="uid://ducckiwe27xbf" path="res://radio.tscn" id="33_mxeui"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ylait"]
-size = Vector3(0.13918, 2.39284, 2.04147)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_k07d6"]
 _surfaces = [{
@@ -193,7 +190,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="3"]
-size = Vector3(1.36, 2, 0.0824622)
+size = Vector3(2.45558, 2, 0.0824622)
 
 [sub_resource type="Animation" id="Animation_5jg3g"]
 length = 0.001
@@ -233,6 +230,84 @@ _data = {
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_p8dry"]
 size = Vector3(0.208092, 0.156309, 0.428646)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5rtqh"]
+albedo_color = Color(0, 0.443137, 1, 1)
+
+[sub_resource type="Animation" id="Animation_gelol"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.2163, 1.19759, 7.89716)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3.48787e-16, 0.00204204, 3.48787e-16)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_spk8u"]
+resource_name = "open_door"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(3.48787e-16, 0.00204204, 3.48787e-16), Vector3(3.48787e-16, -1.90136, 3.48787e-16)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ugot3"]
+_data = {
+"RESET": SubResource("Animation_gelol"),
+"open_door": SubResource("Animation_spk8u")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bcyii"]
+albedo_color = Color(0, 0.439216, 1, 1)
 
 [sub_resource type="Animation" id="Animation_1ei5j"]
 length = 0.001
@@ -277,12 +352,6 @@ size = Vector3(3.02111, 1, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.68993, 0, 0.648053)
 
 [node name="Pause menu" parent="." instance=ExtResource("4_r4d44")]
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26192, 0)
-shape = SubResource("BoxShape3D_ylait")
 
 [node name="TBLoader" type="TBLoader" parent="."]
 map_resource = "res://maps/gofore.map"
@@ -550,6 +619,38 @@ shape = SubResource("BoxShape3D_p8dry")
 [node name="keycard" parent="gofore_downstairs/keycard" instance=ExtResource("27_jrus1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.250494, -0.52063, -0.317508)
 
+[node name="Door" type="StaticBody3D" parent="gofore_downstairs"]
+transform = Transform3D(0.999998, -3.48074e-16, 0.00204203, 3.48787e-16, 1, -3.48787e-16, -0.00204203, 3.49498e-16, 0.999998, -1.2163, 1.19759, 7.89716)
+script = ExtResource("21_chq5b")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="gofore_downstairs/Door"]
+transform = Transform3D(1, 6.41663e-24, 6.79995e-09, -3.18676e-22, 1, -3.69786e-23, 1.9529e-09, -3.09511e-22, 1, -0.94385, 0, -0.00054574)
+shape = SubResource("3")
+
+[node name="door" parent="gofore_downstairs/Door/CollisionShape" instance=ExtResource("22_q5pr1")]
+transform = Transform3D(-4.382e-08, 3.48787e-16, 1, -3.48787e-16, 1, -3.48787e-16, -1, -3.48787e-16, -4.36818e-08, 1.09278, -1.13267, -2.67124)
+
+[node name="door2" parent="gofore_downstairs/Door/CollisionShape/door" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1.04979, -1.99841e-30, 0, -2.13726e-30, 1, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_5rtqh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="gofore_downstairs/Door"]
+libraries = {
+"": SubResource("AnimationLibrary_ugot3")
+}
+
+[node name="Keypad" parent="gofore_downstairs" node_paths=PackedStringArray("door") instance=ExtResource("24_lobxq")]
+transform = Transform3D(-0.999999, 3.48787e-16, -8.74227e-08, 3.48787e-16, 1, -3.48787e-16, 8.74227e-08, -3.48787e-16, -0.999999, -2.44603, 1.47892, 7.86026)
+correct_password = "5432"
+door = NodePath("../Door")
+
+[node name="MeshInstance" parent="gofore_downstairs/Keypad" index="3"]
+transform = Transform3D(1, 8.89624e-25, 0, -2.9021e-24, 1, 0, 0, 0, 1, 0.000984192, 0.00120187, 0.0148263)
+surface_material_override/0 = SubResource("StandardMaterial3D_bcyii")
+
+[node name="Key0" parent="gofore_downstairs/Keypad/Keys" index="10"]
+transform = Transform3D(1, 7.72998e-24, 8.74228e-08, 7.72947e-24, -1, 3.81114e-24, -8.74228e-08, 2.05778e-23, 1, 0, -0.214, 0)
+
 [node name="gofore_upstairs" parent="." instance=ExtResource("28_leejg")]
 transform = Transform3D(-0.808195, 0, -0.588914, 0, 1, 0, 0.588914, 0, -0.808195, -11.2417, 3.6354, -7.93868)
 
@@ -616,5 +717,7 @@ radio_transmitter = NodePath("../Radio_transmitter")
 [editable path="gofore_room_end"]
 [editable path="gofore_room_end/Door/CollisionShape/door"]
 [editable path="gofore_room_end/Keypad"]
+[editable path="gofore_downstairs/Door/CollisionShape/door"]
+[editable path="gofore_downstairs/Keypad"]
 [editable path="gofore_upstairs/Door/CollisionShape/door"]
 [editable path="gofore_upstairs/Keypad"]
