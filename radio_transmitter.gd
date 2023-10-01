@@ -4,6 +4,7 @@ class_name radio_transmitter
 
 @export var radio_receiver: radio = null
 var has_power: bool = false
+@onready var extension = $plug_with_cable/extension
 
 func _ready():
 	if radio_receiver == null:

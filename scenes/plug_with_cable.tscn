@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjmhnctpfd7jh"]
+[gd_scene load_steps=5 format=3 uid="uid://deimlj2t0k2jg"]
 
 [ext_resource type="Script" path="res://addons/Rope3D/Rope3D.gd" id="4_muas5"]
 [ext_resource type="PackedScene" uid="uid://xgl3pexbidre" path="res://scenes/plug.tscn" id="5_rluo4"]

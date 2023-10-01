@@ -17,14 +17,15 @@
 [ext_resource type="PackedScene" uid="uid://hkys6umsiflr" path="res://3d art/whiteboard.glb" id="13_yopid"]
 [ext_resource type="PackedScene" uid="uid://bxrj1c4quvqjy" path="res://scans/gofore_downstairs.glb" id="14_upyxi"]
 [ext_resource type="Script" path="res://scripts/keycard.gd" id="15_2vmun"]
-[ext_resource type="Material" uid="uid://xm5lm73erdlu" path="res://textures/unwiped_material.tres" id="15_4hchx"]
+[ext_resource type="Material" path="res://textures/unwiped_material.tres" id="15_4hchx"]
 [ext_resource type="PackedScene" uid="uid://fgbrl02tqy2w" path="res://3d art/keycard.glb" id="15_rx28t"]
-[ext_resource type="Material" uid="uid://b8p7hutgl0g71" path="res://textures/wiped_material.tres" id="16_mkwpn"]
+[ext_resource type="Material" path="res://textures/wiped_material.tres" id="16_mkwpn"]
 [ext_resource type="PackedScene" uid="uid://hq6h0lejmjyh" path="res://scenes/keyboard.tscn" id="17_1x7nr"]
 [ext_resource type="PackedScene" uid="uid://fg5sus138qia" path="res://keypad/scenes/keypad/Keypad.tscn" id="18_1djir"]
 [ext_resource type="Script" path="res://keypad/scenes/door/Door.gd" id="18_a8o7l"]
 [ext_resource type="PackedScene" uid="uid://bxwpoajh7ekrn" path="res://3d art/door.glb" id="19_qp7b6"]
 [ext_resource type="Material" uid="uid://bbupq6mayivnv" path="res://materials/orange.tres" id="20_rynfh"]
+
 
 [sub_resource type="Animation" id="Animation_lfpxx"]
 length = 0.001
