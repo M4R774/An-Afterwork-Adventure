@@ -17,15 +17,14 @@
 [ext_resource type="PackedScene" uid="uid://hkys6umsiflr" path="res://3d art/whiteboard.glb" id="13_yopid"]
 [ext_resource type="PackedScene" uid="uid://bxrj1c4quvqjy" path="res://scans/gofore_downstairs.glb" id="14_upyxi"]
 [ext_resource type="Script" path="res://scripts/keycard.gd" id="15_2vmun"]
-[ext_resource type="Material" path="res://textures/unwiped_material.tres" id="15_4hchx"]
+[ext_resource type="Material" uid="uid://xm5lm73erdlu" path="res://textures/unwiped_material.tres" id="15_4hchx"]
 [ext_resource type="PackedScene" uid="uid://fgbrl02tqy2w" path="res://3d art/keycard.glb" id="15_rx28t"]
-[ext_resource type="Material" path="res://textures/wiped_material.tres" id="16_mkwpn"]
+[ext_resource type="Material" uid="uid://b8p7hutgl0g71" path="res://textures/wiped_material.tres" id="16_mkwpn"]
 [ext_resource type="PackedScene" uid="uid://hq6h0lejmjyh" path="res://scenes/keyboard.tscn" id="17_1x7nr"]
 [ext_resource type="PackedScene" uid="uid://fg5sus138qia" path="res://keypad/scenes/keypad/Keypad.tscn" id="18_1djir"]
 [ext_resource type="Script" path="res://keypad/scenes/door/Door.gd" id="18_a8o7l"]
 [ext_resource type="PackedScene" uid="uid://bxwpoajh7ekrn" path="res://3d art/door.glb" id="19_qp7b6"]
 [ext_resource type="Material" uid="uid://bbupq6mayivnv" path="res://materials/orange.tres" id="20_rynfh"]
-
 
 [sub_resource type="Animation" id="Animation_lfpxx"]
 length = 0.001
@@ -96,6 +95,21 @@ ambient_light_source = 2
 ambient_light_color = Color(0.827451, 0.827451, 0.827451, 1)
 ssao_enabled = true
 
+[sub_resource type="Animation" id="Animation_yah5t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.68993, 0, 0.648053)]
+}
+
 [sub_resource type="Animation" id="Animation_uc0w1"]
 resource_name = "open_door"
 length = 1.5
@@ -110,21 +124,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(0.659754, 3.24901),
 "update": 0,
 "values": [Vector3(-1.68993, 0, 0.648053), Vector3(-1.68993, 0, -1.42673)]
-}
-
-[sub_resource type="Animation" id="Animation_yah5t"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-1.68993, 0, 0.648053)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vg1jq"]
@@ -306,6 +305,7 @@ environment = SubResource("Environment_ob0n4")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.826956, 0.0135825, -0.668772)
 
 [node name="gofore_o_door" parent="gofore_0" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.68993, 0, 0.648053)
 script = ExtResource("4_j1f8q")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="gofore_0/gofore_o_door" index="0"]
@@ -493,7 +493,7 @@ transform = Transform3D(3.47302e-08, 0, 1, 0, 1, 0, -1, 0, 2.3859e-08, -5.81287,
 transform = Transform3D(0.0733817, 0, 2.84217e-14, 0, 1, 0, -2.11307e-15, 0, 1.55798, -2.64386, 0.978184, -2.64662)
 
 [node name="Door" type="StaticBody3D" parent="gofore_room_end"]
-transform = Transform3D(-4.37114e-08, -3.48787e-16, -1, 3.48787e-16, 1, -3.48787e-16, 1, -3.48787e-16, -4.37114e-08, -2.67179, 1.13267, -0.145073)
+transform = Transform3D(-3.61999e-06, -3.48786e-16, -1, 3.48787e-16, 1, -3.48787e-16, 1, -3.48788e-16, -3.61999e-06, -2.67179, 1.13267, -0.145073)
 script = ExtResource("18_a8o7l")
 
 [node name="CollisionShape" type="CollisionShape3D" parent="gofore_room_end/Door"]

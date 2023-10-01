@@ -1,22 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://csylvg25d888c"]
+[gd_scene load_steps=8 format=3 uid="uid://csylvg25d888c"]
 
 [ext_resource type="Script" path="res://radio_transmitter.gd" id="1_1axa6"]
 [ext_resource type="Script" path="res://extension.gd" id="2_510f5"]
 [ext_resource type="Script" path="res://addons/Rope3D/Rope3D.gd" id="2_caup0"]
 [ext_resource type="PackedScene" uid="uid://xgl3pexbidre" path="res://scenes/plug.tscn" id="3_kebvf"]
+[ext_resource type="PackedScene" uid="uid://c3m86jo3otkft" path="res://3d art/transmitter.glb" id="4_k2c00"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s8v4a"]
-size = Vector3(0.12136, 0.101992, 0.134236)
+size = Vector3(0.354821, 0.177469, 0.539516)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1wepn"]
 albedo_color = Color(1, 0.321569, 1, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_8bvpm"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_8b1wc"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h5fkt"]
-albedo_color = Color(0, 0, 1, 1)
 
 [node name="Radio_transmitter" type="Node3D"]
 script = ExtResource("1_1axa6")
@@ -30,7 +24,7 @@ collision_layer = 16
 script = ExtResource("2_510f5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="plug_with_cable/extension"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00117815, -0.000269033, -0.238231)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00691557, 0.0444848, -0.278395)
 shape = SubResource("BoxShape3D_s8v4a")
 
 [node name="RopeEndPoint1" type="Marker3D" parent="plug_with_cable/extension"]
@@ -44,14 +38,8 @@ material = SubResource("StandardMaterial3D_1wepn")
 attached_to = NodePath("../../plug/RopeEndPoint2")
 collision_layer = 16
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="plug_with_cable/extension"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00828457, 0.391724, -0.490731)
-shape = SubResource("BoxShape3D_8bvpm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="plug_with_cable/extension/CollisionShape3D2"]
-mesh = SubResource("BoxMesh_8b1wc")
-skeleton = NodePath("../../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_h5fkt")
+[node name="transmitter" parent="plug_with_cable/extension" instance=ExtResource("4_k2c00")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.0449837, -0.27979)
 
 [node name="plug" parent="plug_with_cable" instance=ExtResource("3_kebvf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12015, 0, 1.91366)
