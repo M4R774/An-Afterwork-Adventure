@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://Scripts/Menus and highscore/name_field.gd" id="6_e3hlf"]
 [ext_resource type="Script" path="res://Scripts/Menus and highscore/submit_highscore.gd" id="7_gkyrt"]
 [ext_resource type="VideoStream" path="res://2d art/dji_fly_20230930_224326_580_1696103641016_quickshot.ogv" id="9_41kce"]
-[ext_resource type="Script" path="res://scenes/videolooper.gd" id="10_pcvi5"]
+[ext_resource type="Script" path="res://scripts/videolooper.gd" id="10_vhyft"]
 [ext_resource type="AudioStream" uid="uid://bx744xq3ijixk" path="res://audio/DancingGOD.ogg" id="11_j8ocg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0q8m6"]
@@ -206,7 +206,7 @@ grow_vertical = 2
 stream = ExtResource("9_41kce")
 autoplay = true
 expand = true
-script = ExtResource("10_pcvi5")
+script = ExtResource("10_vhyft")
 one_shot_video = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

@@ -28,8 +28,8 @@ func score_is_high_enough_for_local_leaderboard(score):
 
 
 func add_new_local_highscore():
-	if score_is_high_enough_for_local_leaderboard(SCORE):
-		LOCAL_HIGHSCORES.append({"name": PLAYER_NAME, "score":SCORE})
+	if score_is_high_enough_for_local_leaderboard(get_highscore()):
+		LOCAL_HIGHSCORES.append({"name": PLAYER_NAME, "score":get_highscore()})
 	LOCAL_HIGHSCORES.sort_custom(Callable(self,"customPlayerComparison"))
 	if LOCAL_HIGHSCORES.size() > 10:
 		LOCAL_HIGHSCORES.pop_back()
@@ -37,7 +37,12 @@ func add_new_local_highscore():
 
 
 func customPlayerComparison(player_a, player_b):
-	return player_a["score"] > player_b["score"]
+	if player_a["score"] == null:
+		return false
+	elif player_b["score"] == null:
+		return true
+	else:
+		return player_a["score"] > player_b["score"]
 
 
 func save_highscores_to_disk():

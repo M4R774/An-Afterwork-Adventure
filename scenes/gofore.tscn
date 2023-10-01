@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://ccgkg3kymlb6d"]
+[gd_scene load_steps=63 format=3 uid="uid://ccgkg3kymlb6d"]
 
 [ext_resource type="PackedScene" uid="uid://dx5184jxv6hi3" path="res://scenes/Player.tscn" id="1_12c77"]
 [ext_resource type="PackedScene" uid="uid://tcfmayf0lxh5" path="res://scenes/pause_menu.tscn" id="1_070ne"]
@@ -28,6 +28,10 @@
 [ext_resource type="PackedScene" uid="uid://bxwpoajh7ekrn" path="res://3d art/door.glb" id="19_qp7b6"]
 [ext_resource type="Material" path="res://materials/orange.tres" id="20_rynfh"]
 [ext_resource type="Material" path="res://materials/red.tres" id="27_c7pwb"]
+[ext_resource type="AudioStream" uid="uid://dwxw365mopu2r" path="res://audio/LimitedSpace01_0_3-_publish.ogg" id="29_the3q"]
+[ext_resource type="PackedScene" uid="uid://ducckiwe27xbf" path="res://radio.tscn" id="30_4yytq"]
+[ext_resource type="PackedScene" uid="uid://csylvg25d888c" path="res://radio_transmitter.tscn" id="30_ssb2n"]
+[ext_resource type="Script" path="res://scripts/Goal.gd" id="32_06rql"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ylait"]
 size = Vector3(0.13918, 2.39284, 2.04147)
@@ -264,6 +268,8 @@ _data = {
 "open_door": SubResource("Animation_0nqe1")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_f1d0e"]
+
 [node name="gofore" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.68993, 0, 0.648053)
 
@@ -292,7 +298,7 @@ mesh = SubResource("ArrayMesh_xwg6n")
 shape = SubResource("ConcavePolygonShape3D_ogpu8")
 
 [node name="Player" parent="." instance=ExtResource("1_12c77")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12548, 0.690764, 0.0340296)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.04334, 0.690764, 0.224761)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ob0n4")
@@ -570,7 +576,29 @@ door = NodePath("../Door")
 transform = Transform3D(1, 8.89624e-25, 0, -2.9021e-24, 1, 0, 0, 0, 1, 0.000984192, 0.00120187, 0.0148263)
 surface_material_override/0 = ExtResource("27_c7pwb")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("29_the3q")
+autoplay = true
+
+[node name="Radio_transmitter" parent="." node_paths=PackedStringArray("radio_receiver") instance=ExtResource("30_ssb2n")]
+transform = Transform3D(1, -3.48787e-16, 3.48787e-16, 3.48787e-16, 1, -3.48787e-16, -3.48787e-16, 3.48787e-16, 1, -0.231021, -0.00712496, -4.59293)
+radio_receiver = NodePath("../Radio")
+
+[node name="Radio" parent="." node_paths=PackedStringArray("radio_transmitter") instance=ExtResource("30_4yytq")]
+transform = Transform3D(1, -3.48787e-16, 3.48787e-16, 3.48787e-16, 1, -3.48787e-16, -3.48787e-16, 3.48787e-16, 1, -0.231021, -0.00712496, -4.59293)
+radio_transmitter = NodePath("../Radio_transmitter")
+
+[node name="Maali" type="Area3D" parent="."]
+transform = Transform3D(2, -6.97574e-16, 6.97574e-16, 6.97574e-16, 2, -6.97574e-16, -6.97574e-16, 6.97574e-16, 2, -6.74817, 5.04974, -4.80706)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("32_06rql")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maali"]
+shape = SubResource("BoxShape3D_f1d0e")
+
 [connection signal="electricity_changed" from="gofore_0/door_cable/plug" to="gofore_0/gofore_o_door" method="_on_plug_electricity_changed"]
+[connection signal="body_entered" from="Maali" to="Maali" method="_on_body_entered"]
 
 [editable path="gofore_0"]
 [editable path="gofore_0/door_cable/plug"]

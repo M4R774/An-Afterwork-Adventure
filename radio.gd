@@ -1,4 +1,4 @@
-extends Node3D
+extends Interactable
 
 class_name radio
 
@@ -34,3 +34,11 @@ func _on_plug_electricity_changed(value):
 
 func radio_transmission_started():
 	_on_plug_electricity_changed(has_power)
+
+# overriden in child
+func get_interaction_text():
+	return "pick up radio"
+
+# overriden in child
+func interact():
+	print("interacted with ", name)
