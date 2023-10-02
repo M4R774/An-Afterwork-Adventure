@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://ccgkg3kymlb6d"]
+[gd_scene load_steps=82 format=3 uid="uid://ccgkg3kymlb6d"]
 
 [ext_resource type="PackedScene" uid="uid://dx5184jxv6hi3" path="res://scenes/Player.tscn" id="2_1eigl"]
 [ext_resource type="Texture2D" uid="uid://dhjipjt4l0tfr" path="res://2d art/dji_fly_20230930_225748_583_1696103973784_pano.jpg" id="3_ou7m1"]
@@ -29,11 +29,15 @@
 [ext_resource type="PackedScene" uid="uid://fgbrl02tqy2w" path="res://3d art/keycard.glb" id="27_jrus1"]
 [ext_resource type="PackedScene" uid="uid://cp076ltsbc7jv" path="res://scans/gofore_upstairs.glb" id="28_leejg"]
 [ext_resource type="Material" uid="uid://bkqu36rs5dcj8" path="res://materials/red.tres" id="29_salc3"]
+[ext_resource type="Script" path="res://scenes/keycard_reader.gd" id="30_5kdam"]
 [ext_resource type="Script" path="res://scripts/Goal.gd" id="30_xesng"]
 [ext_resource type="AudioStream" uid="uid://dwxw365mopu2r" path="res://audio/LimitedSpace01_0_3-_publish.ogg" id="31_iapud"]
-[ext_resource type="PackedScene" uid="uid://ctymgjob6xwuh" path="res://3d art/morse_book.glb" id="31_j3n0k"]
+[ext_resource type="AudioStream" uid="uid://c3nudjaeanjdy" path="res://keypad/assets/correct_password.wav" id="32_j1vun"]
 [ext_resource type="PackedScene" uid="uid://csylvg25d888c" path="res://scenes/radio_transmitter.tscn" id="32_ryjr6"]
 [ext_resource type="PackedScene" uid="uid://ducckiwe27xbf" path="res://scenes/radio.tscn" id="33_mxeui"]
+[ext_resource type="AudioStream" uid="uid://dkyyogavjpuf0" path="res://keypad/assets/wrong_password.wav" id="33_ni3s7"]
+[ext_resource type="PackedScene" uid="uid://bds4csqlvb1la" path="res://keypad/scenes/keypad/KeypadButton.tscn" id="34_11auv"]
+[ext_resource type="Texture2D" uid="uid://ccixirbtv4ie5" path="res://keypad/assets/white tick.png" id="35_rupp7"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_k07d6"]
 _surfaces = [{
@@ -191,7 +195,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="3"]
-size = Vector3(2.45558, 2, 0.0824622)
+size = Vector3(1.63458, 2, 0.0824622)
 
 [sub_resource type="Animation" id="Animation_5jg3g"]
 length = 0.001
@@ -345,6 +349,61 @@ _data = {
 "RESET": SubResource("Animation_1ei5j"),
 "open_door": SubResource("Animation_0nqe1")
 }
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l06na"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.301961)
+
+[sub_resource type="Animation" id="Animation_teem3"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3.48787e-16, 1.01119, 3.48787e-16)]
+}
+
+[sub_resource type="Animation" id="Animation_hhusb"]
+resource_name = "open_door"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(3.48787e-16, 1.01119, 3.48787e-16), Vector3(3.48787e-16, 2.16233, 3.48787e-16), Vector3(3.48787e-16, 3.06541, 3.48787e-16)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4nrqf"]
+_data = {
+"RESET": SubResource("Animation_teem3"),
+"open_door": SubResource("Animation_hhusb")
+}
+
+[sub_resource type="BoxMesh" id="1"]
+size = Vector3(0.35, 0.55, 0.02)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f61j8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cb2xs"]
+albedo_color = Color(0, 0, 0, 1)
+metallic_specular = 0.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_yfiq8"]
+material = SubResource("StandardMaterial3D_cb2xs")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2s473"]
+size = Vector3(0.334266, 0.53087, 0.164211)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f1d0e"]
 size = Vector3(3.02111, 1, 1)
@@ -687,6 +746,81 @@ surface_material_override/0 = ExtResource("29_salc3")
 [node name="Key0" parent="gofore_upstairs/Keypad/Keys" index="10"]
 transform = Transform3D(1, 7.72998e-24, 8.74228e-08, 7.72947e-24, -1, 3.81114e-24, -8.74228e-08, 2.05778e-23, 1, 0, -0.214, 0)
 
+[node name="Door2" type="StaticBody3D" parent="gofore_upstairs"]
+transform = Transform3D(0.530853, 1.1043e-16, 0.847465, 3.48787e-16, 1, -3.48787e-16, -0.847465, 4.80739e-16, 0.530853, -0.0473566, 1.19759, 5.46775)
+script = ExtResource("21_chq5b")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="gofore_upstairs/Door2"]
+transform = Transform3D(1, 0, 0, -2.64698e-23, 1, 0, 0, 0, 1, -0.676576, 0, 0)
+shape = SubResource("3")
+
+[node name="door" parent="gofore_upstairs/Door2/CollisionShape" instance=ExtResource("22_q5pr1")]
+transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, -3.48787e-16, 1, -3.48787e-16, -1, -3.48787e-16, -4.37114e-08, 0.821649, -1.13267, -2.67179)
+
+[node name="door2" parent="gofore_upstairs/Door2/CollisionShape/door" index="0"]
+transform = Transform3D(1, 2.07076e-31, 0, -1.97215e-31, 1.05, 1.90078e-30, 0, -1.57772e-30, 1.265, -0.00491619, 0, 0.111337)
+surface_material_override/0 = SubResource("StandardMaterial3D_l06na")
+
+[node name="door_handle" parent="gofore_upstairs/Door2/CollisionShape/door" index="1"]
+transform = Transform3D(0.0167064, -4.62223e-32, -2.32831e-10, -1.47911e-31, 0.021041, -3.9443e-31, 0, 0, 0.0612367, -2.53467, 1.00337, -1.08591)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="gofore_upstairs/Door2"]
+libraries = {
+"": SubResource("AnimationLibrary_4nrqf")
+}
+
+[node name="Keypad2" type="StaticBody3D" parent="gofore_upstairs" node_paths=PackedStringArray("door")]
+transform = Transform3D(0.561, -9.30616e-17, 0.827815, -3.48787e-16, 1, 3.48787e-16, -0.827815, -4.84401e-16, 0.561, -0.353549, 1.50378, 4.64659)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("30_5kdam")
+door = NodePath("../Door2")
+
+[node name="CorrectAudioStream" type="AudioStreamPlayer3D" parent="gofore_upstairs/Keypad2"]
+stream = ExtResource("32_j1vun")
+unit_size = 45.0
+
+[node name="WrongAudioStream" type="AudioStreamPlayer3D" parent="gofore_upstairs/Keypad2"]
+stream = ExtResource("33_ni3s7")
+unit_size = 45.0
+
+[node name="MeshInstance" type="MeshInstance3D" parent="gofore_upstairs/Keypad2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, -1.65436e-23, 1, 0.000984192, 0.00120211, 0.0148258)
+mesh = SubResource("1")
+surface_material_override/0 = SubResource("StandardMaterial3D_f61j8")
+
+[node name="Keys" type="Node3D" parent="gofore_upstairs/Keypad2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00114202, 0)
+
+[node name="KeyClear" parent="gofore_upstairs/Keypad2/Keys" instance=ExtResource("34_11auv")]
+transform = Transform3D(1, 0, 8.74228e-08, 0, -1, 0, -8.74228e-08, 0, 1, 0.106, -0.214, 0)
+script = null
+
+[node name="KeyEnter" parent="gofore_upstairs/Keypad2/Keys" instance=ExtResource("34_11auv")]
+transform = Transform3D(1, 0, 8.74228e-08, 0, -1, 0, -8.74228e-08, 0, 1, -0.106, -0.214, 0)
+script = null
+
+[node name="TickMark" type="Sprite3D" parent="gofore_upstairs/Keypad2/Keys/KeyEnter"]
+transform = Transform3D(0.1, -3.48787e-17, 8.74228e-09, -3.48787e-17, -0.1, 3.48787e-17, -8.74228e-09, 3.48787e-17, 0.1, -0.006, -0.00399999, -0.008)
+flip_h = true
+texture = ExtResource("35_rupp7")
+
+[node name="KeyCodeScreen" type="MeshInstance3D" parent="gofore_upstairs/Keypad2"]
+transform = Transform3D(0.132, 1.49012e-08, 8.32667e-17, 6.61744e-24, -4.37114e-08, 0.184, 1.86265e-09, -1, -8.0429e-09, 0, 0.0560431, 0.00215912)
+mesh = SubResource("PlaneMesh_yfiq8")
+
+[node name="Label3D" type="Label3D" parent="gofore_upstairs/Keypad2"]
+transform = Transform3D(-1, 0, -6.33299e-08, -1.58819e-22, 1, 1.68745e-22, 6.33299e-08, 8.27181e-25, -1, 0, 0.0885372, 0)
+text = "waiting
+for
+keycard"
+font_size = 12
+outline_size = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gofore_upstairs/Keypad2"]
+transform = Transform3D(1, 0, -7.45058e-09, 5.29396e-23, 1, -6.53473e-23, 7.45058e-09, 8.27181e-25, 1, -0.0022707, 0, 0.066576)
+shape = SubResource("BoxShape3D_2s473")
+
 [node name="Maali" type="Area3D" parent="gofore_upstairs"]
 transform = Transform3D(-1.968, 5.62128e-16, -0.356334, 6.97574e-16, 2, -6.97574e-16, 0.356334, -8.10698e-16, -1.968, 2.11828, 0.177253, 16.2614)
 collision_layer = 3
@@ -696,9 +830,6 @@ script = ExtResource("30_xesng")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="gofore_upstairs/Maali"]
 transform = Transform3D(1, -2.70578e-23, 1.22337e-08, -1.06467e-22, 1, 8.38243e-24, 9.07289e-09, 2.90068e-23, 1, 0, -0.411965, 0)
 shape = SubResource("BoxShape3D_f1d0e")
-
-[node name="morse_book" parent="gofore_upstairs" instance=ExtResource("31_j3n0k")]
-transform = Transform3D(0.0282839, 0, 0.19799, 0, 0.2, 0, -0.19799, 0, 0.0282839, -3.04651, 0.701094, -4.91486)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("31_iapud")
@@ -725,3 +856,4 @@ radio_transmitter = NodePath("../Radio_transmitter")
 [editable path="gofore_downstairs/Keypad"]
 [editable path="gofore_upstairs/Door/CollisionShape/door"]
 [editable path="gofore_upstairs/Keypad"]
+[editable path="gofore_upstairs/Door2/CollisionShape/door"]
