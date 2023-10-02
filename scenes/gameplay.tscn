@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://ccgkg3kymlb6d"]
+[gd_scene load_steps=83 format=3 uid="uid://ccgkg3kymlb6d"]
 
 [ext_resource type="PackedScene" uid="uid://dx5184jxv6hi3" path="res://scenes/Player.tscn" id="2_1eigl"]
 [ext_resource type="Texture2D" uid="uid://dhjipjt4l0tfr" path="res://2d art/dji_fly_20230930_225748_583_1696103973784_pano.jpg" id="3_ou7m1"]
@@ -32,6 +32,7 @@
 [ext_resource type="Script" path="res://scenes/keycard_reader.gd" id="30_5kdam"]
 [ext_resource type="Script" path="res://scripts/Goal.gd" id="30_xesng"]
 [ext_resource type="AudioStream" uid="uid://dwxw365mopu2r" path="res://audio/LimitedSpace01_0_3-_publish.ogg" id="31_iapud"]
+[ext_resource type="PackedScene" uid="uid://ctymgjob6xwuh" path="res://3d art/morse_book.glb" id="31_j3n0k"]
 [ext_resource type="AudioStream" uid="uid://c3nudjaeanjdy" path="res://keypad/assets/correct_password.wav" id="32_j1vun"]
 [ext_resource type="PackedScene" uid="uid://csylvg25d888c" path="res://scenes/radio_transmitter.tscn" id="32_ryjr6"]
 [ext_resource type="PackedScene" uid="uid://ducckiwe27xbf" path="res://scenes/radio.tscn" id="33_mxeui"]
@@ -430,7 +431,7 @@ mesh = SubResource("ArrayMesh_k07d6")
 shape = SubResource("ConcavePolygonShape3D_16iry")
 
 [node name="Player" parent="." instance=ExtResource("2_1eigl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.04334, 0.690764, 0.224761)
+transform = Transform3D(0.802901, 0, 0.596113, 0, 1, 0, -0.596113, 0, 0.802901, 2.5073, 0.690764, 1.10629)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ob0n4")
@@ -592,7 +593,7 @@ visible = false
 texture = ExtResource("10_e8spf")
 
 [node name="Keyboard" parent="gofore_0" instance=ExtResource("12_dhm4r")]
-transform = Transform3D(0.480422, 0, -0.877037, 0, 1, 0, 0.877037, 0, 0.480422, 0.192725, 0.775078, -1.55069)
+transform = Transform3D(-0.284768, 0, 0.958596, 0, 1, 0, -0.958596, 0, -0.284768, 0.888122, 0.775078, -1.29905)
 
 [node name="gofore_stairs" parent="." instance=ExtResource("13_3dmxy")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.50754, -2.75988, -0.935462)
@@ -820,6 +821,9 @@ outline_size = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="gofore_upstairs/Keypad2"]
 transform = Transform3D(1, 0, -7.45058e-09, 5.29396e-23, 1, -6.53473e-23, 7.45058e-09, 8.27181e-25, 1, -0.0022707, 0, 0.066576)
 shape = SubResource("BoxShape3D_2s473")
+
+[node name="morse_book" parent="gofore_upstairs" instance=ExtResource("31_j3n0k")]
+transform = Transform3D(0.0390113, 0, 0.196158, 0, 0.2, 0, -0.196158, 0, 0.0390112, -3.09026, 0.702021, -4.87697)
 
 [node name="Maali" type="Area3D" parent="gofore_upstairs"]
 transform = Transform3D(-1.968, 5.62128e-16, -0.356334, 6.97574e-16, 2, -6.97574e-16, 0.356334, -8.10698e-16, -1.968, 2.11828, 0.177253, 16.2614)
