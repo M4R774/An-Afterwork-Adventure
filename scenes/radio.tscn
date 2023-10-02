@@ -1,45 +1,58 @@
-[gd_scene load_steps=7 format=3 uid="uid://ck886vglrw2kg"]
+[gd_scene load_steps=10 format=3 uid="uid://ducckiwe27xbf"]
 
-[ext_resource type="Script" path="res://scripts/radio.gd" id="1_4fdqc"]
-[ext_resource type="Script" path="res://addons/Rope3D/Rope3D.gd" id="2_y5suh"]
-[ext_resource type="PackedScene" uid="uid://xgl3pexbidre" path="res://scenes/plug.tscn" id="4_rdfd1"]
+[ext_resource type="Script" path="res://scripts/radio.gd" id="1_2l1uy"]
+[ext_resource type="AudioStream" uid="uid://dc7l04k3ysuej" path="res://audio/static.ogg" id="2_3edbb"]
+[ext_resource type="AudioStream" uid="uid://gg07w84gut7r" path="res://audio/morse_code.ogg" id="3_cfpac"]
+[ext_resource type="Script" path="res://scripts/extension.gd" id="4_7y5si"]
+[ext_resource type="Script" path="res://addons/Rope3D/Rope3D.gd" id="4_gawag"]
+[ext_resource type="PackedScene" uid="uid://xgl3pexbidre" path="res://scenes/plug.tscn" id="5_fqn15"]
+[ext_resource type="PackedScene" uid="uid://dhm62v1ssr4n0" path="res://3d art/radio.glb" id="6_prppr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s8v4a"]
-size = Vector3(0.392139, 0.366111, 0.372359)
+size = Vector3(0.332287, 0.415244, 0.35617)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1wepn"]
 albedo_color = Color(1, 0.321569, 1, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_eyqs0"]
-
 [node name="Radio" type="Node3D"]
+script = ExtResource("1_2l1uy")
 
-[node name="radio" type="RigidBody3D" parent="."]
-collision_layer = 16
-script = ExtResource("1_4fdqc")
+[node name="kohina" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_3edbb")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="radio"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00117815, 0.18857, -0.000972092)
+[node name="morse" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_cfpac")
+
+[node name="plug_with_cable" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52265, 0.258849, -0.701001)
+
+[node name="extension" type="RigidBody3D" parent="plug_with_cable" groups=["pickup"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32634, 0, -0.647551)
+collision_layer = 18
+script = ExtResource("4_7y5si")
+interaction_text = "pick up radio receiver"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="plug_with_cable/extension"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00117815, 0.146781, -0.175466)
 shape = SubResource("BoxShape3D_s8v4a")
 
-[node name="RopeEndPoint1" type="Marker3D" parent="radio"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.195109, 0.075589, 0)
+[node name="RopeEndPoint1" type="Marker3D" parent="plug_with_cable/extension"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00294203, 0)
 
-[node name="Rope3D" type="Node3D" parent="radio"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.195503, 0.0356857, 0.000706673)
-script = ExtResource("2_y5suh")
+[node name="Rope3D" type="Node3D" parent="plug_with_cable/extension"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0128538, 0.000706673)
+script = ExtResource("4_gawag")
 width = 0.025
 material = SubResource("StandardMaterial3D_1wepn")
 attached_to = NodePath("../../plug/RopeEndPoint2")
 collision_layer = 16
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="radio"]
-transform = Transform3D(0.382, 0, 0, 0, 0.382, 0, 0, 0, 0.382, 0, 0.188839, 0)
-mesh = SubResource("BoxMesh_eyqs0")
+[node name="radio" parent="plug_with_cable/extension" instance=ExtResource("6_prppr")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -0.0614988, -0.161718)
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="radio"]
+[node name="plug" parent="plug_with_cable" instance=ExtResource("5_fqn15")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12015, 0, 1.91366)
 
-[node name="plug" parent="." node_paths=PackedStringArray("own_devices") instance=ExtResource("4_rdfd1")]
-own_devices = [NodePath("../radio")]
+[connection signal="electricity_changed" from="plug_with_cable/plug" to="." method="_on_plug_electricity_changed"]
 
-[editable path="plug"]
+[editable path="plug_with_cable/plug"]
