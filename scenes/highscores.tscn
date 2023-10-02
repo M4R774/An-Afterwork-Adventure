@@ -51,7 +51,7 @@ theme_override_constants/separation = 40
 [node name="Main title" type="Label" parent="Scoreboard/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("4")
-text = "Highscores"
+text = "Top 10 fastest players"
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Scoreboard/VBoxContainer"]
@@ -131,7 +131,7 @@ theme_override_constants/separation = 50
 [node name="Label" type="Label" parent="Scoreboard/VBoxContainer/MarginContainer2/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("4")
-text = "Your latest score: "
+text = "Your latest time: "
 script = ExtResource("5_f70gn")
 
 [node name="Back to main menu" type="Button" parent="Scoreboard/VBoxContainer/MarginContainer2/HBoxContainer"]

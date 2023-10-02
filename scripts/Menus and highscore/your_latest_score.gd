@@ -2,7 +2,7 @@ extends Label
 
 
 func _ready():
-	if HIGHSCORE_SINGLETON.SCORE != null:
-		self.text = "Your latest score: " + str(HIGHSCORE_SINGLETON.SCORE)
+	if HIGHSCORE_SINGLETON.get_highscore() != null:
+		self.text = "Your latest time: " + str(abs(HIGHSCORE_SINGLETON.get_highscore())) + " seconds"
 	else:
 		self.text = ""
