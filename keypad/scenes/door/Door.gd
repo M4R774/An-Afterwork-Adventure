@@ -4,7 +4,7 @@ enum STATE {
 	OPEN,
 	CLOSED
 }
-
+@export var hint_index: int = 1
 var state = STATE.CLOSED
 # onready var anim_player = $AnimationPlayer
 @onready var anim_player = $AnimationPlayer
@@ -33,6 +33,7 @@ func open():
 		return
 	anim_player.play("open_door")
 	print("door opened")
+	get_tree().get_root().get_node("gameplay").player_made_progress(hint_index)
 
 func close():
 	# return if door is in mid animation

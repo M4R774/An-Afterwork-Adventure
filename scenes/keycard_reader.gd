@@ -19,3 +19,4 @@ func interact():
 	var player_inventory = get_tree().root.get_node("gameplay/Player/Inventory")
 	if player_inventory.check_if_item_is_in_inventory(player_inventory.items.keycard):
 		door.open()
+		get_tree().get_root().get_node("gameplay").player_made_progress(7)
