@@ -41,12 +41,11 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_top = -8.00012
-offset_right = 11.0
-offset_bottom = 2.99988
+offset_right = 7.0
+offset_bottom = -1.00012
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.769852
-color = Color(1, 1, 1, 0.0980392)
 
 [node name="InteractionManager" type="Node3D" parent="Head/Camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.244993, -0.129482, -0.888639)

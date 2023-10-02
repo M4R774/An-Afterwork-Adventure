@@ -10,9 +10,11 @@ config_version=5
 
 [application]
 
-config/name="Office Escape"
+config/name="An Afterwork Adventure"
+config/description="Where is everybody? What happened? Where am I? I want to get out of here, but the door is locked... "
 run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [autoload]
