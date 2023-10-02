@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dx5184jxv6hi3"]
+[gd_scene load_steps=10 format=3 uid="uid://dx5184jxv6hi3"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/InteractionManager.gd" id="2_0264i"]
 [ext_resource type="PackedScene" uid="uid://kgvd2rvm0pix" path="res://3d art/hand.glb" id="3_jvhej"]
 [ext_resource type="Script" path="res://keypad/scenes/player/Interaction.gd" id="4_71ge0"]
+[ext_resource type="Theme" uid="uid://b8rtuer7mht2o" path="res://ui/basic_theme.tres" id="5_726nd"]
 [ext_resource type="Script" path="res://scripts/Inventory.gd" id="5_j8ed5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vti54"]
@@ -89,6 +90,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("5_726nd")
 theme_type_variation = &"HeaderLarge"
 theme_override_font_sizes/font_size = 30
 text = "Press E to interact with name"
