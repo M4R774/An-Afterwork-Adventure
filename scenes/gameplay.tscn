@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://ccgkg3kymlb6d"]
+[gd_scene load_steps=85 format=3 uid="uid://ccgkg3kymlb6d"]
 
 [ext_resource type="Script" path="res://scripts/HINTS.gd" id="1_y2pni"]
 [ext_resource type="PackedScene" uid="uid://dx5184jxv6hi3" path="res://scenes/Player.tscn" id="2_1eigl"]
@@ -316,6 +316,9 @@ _data = {
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bcyii"]
 albedo_color = Color(0, 0.439216, 1, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_jcf3c"]
+size = Vector3(1, 2.75597, 9.51633)
+
 [sub_resource type="Animation" id="Animation_1ei5j"]
 length = 0.001
 tracks/0/type = "value"
@@ -408,7 +411,7 @@ material = SubResource("StandardMaterial3D_cb2xs")
 size = Vector3(0.334266, 0.53087, 0.164211)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f1d0e"]
-size = Vector3(3.02111, 1, 1)
+size = Vector3(4.65936, 1, 1)
 
 [node name="gameplay" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.68993, 0, 0.648053)
@@ -725,6 +728,12 @@ surface_material_override/0 = SubResource("StandardMaterial3D_bcyii")
 [node name="Key0" parent="alakerta/Keypad/Keys" index="10"]
 transform = Transform3D(1, 7.72998e-24, 8.74228e-08, 7.72947e-24, -1, 3.81114e-24, -8.74228e-08, 2.05778e-23, 1, 0, -0.214, 0)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="alakerta"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.05239, 1.31651, 4.29034)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="alakerta/StaticBody3D"]
+shape = SubResource("BoxShape3D_jcf3c")
+
 [node name="ylakerta" parent="." instance=ExtResource("28_leejg")]
 transform = Transform3D(-0.808195, 0, -0.588914, 0, 1, 0, 0.588914, 0, -0.808195, -11.2417, 3.6354, -7.93868)
 
@@ -847,8 +856,42 @@ collision_mask = 3
 script = ExtResource("30_xesng")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ylakerta/Maali"]
+transform = Transform3D(0.996814, 2.89319e-17, 0.0797639, -2.67096e-17, 1, -2.89317e-17, -0.0797639, 2.67093e-17, 0.996814, -0.572091, -0.411965, 0.144058)
+shape = SubResource("BoxShape3D_f1d0e")
+
+[node name="Maali2" type="Area3D" parent="ylakerta"]
+transform = Transform3D(-1.51988, 9.83533e-16, 1.29998, 6.97574e-16, 2, -6.97574e-16, -1.29998, -7.66983e-17, -1.51988, -4.18136, 0.177253, 12.7327)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("30_xesng")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ylakerta/Maali2"]
 transform = Transform3D(1, -2.70578e-23, 1.22337e-08, -1.06467e-22, 1, 8.38243e-24, 9.07289e-09, 2.90068e-23, 1, 0, -0.411965, 0)
 shape = SubResource("BoxShape3D_f1d0e")
+
+[node name="Maali3" type="Area3D" parent="ylakerta"]
+transform = Transform3D(-1.16765, 9.73607e-16, 1.62376, 6.97574e-16, 2, -6.97574e-16, -1.62376, 1.59085e-16, -1.16765, -8.79289, 0.177253, 8.55628)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("30_xesng")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ylakerta/Maali3"]
+transform = Transform3D(1, -2.70578e-23, 1.22337e-08, -1.06467e-22, 1, 8.38243e-24, 9.07289e-09, 2.90068e-23, 1, 0, -0.411965, 0)
+shape = SubResource("BoxShape3D_f1d0e")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="ylakerta"]
+transform = Transform3D(0.642788, 0, 0.766045, 0, 1, 0, -0.766045, 0, 0.642788, 6.58488, 1.75286, 3.81543)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ylakerta/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0494132, 0, 0.00338554)
+shape = SubResource("BoxShape3D_jcf3c")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="ylakerta"]
+transform = Transform3D(0.791469, 0, -0.61121, 0, 1, 0, 0.61121, 0, 0.791469, 6.58972, 1.75286, 9.85675)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ylakerta/StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0494132, 0, 0.00338554)
+shape = SubResource("BoxShape3D_jcf3c")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("31_iapud")
@@ -864,6 +907,8 @@ radio_transmitter = NodePath("../Radio_transmitter")
 
 [connection signal="electricity_changed" from="starting_room/door_cable/plug" to="starting_room/gofore_o_door" method="_on_plug_electricity_changed"]
 [connection signal="body_entered" from="ylakerta/Maali" to="ylakerta/Maali" method="_on_body_entered"]
+[connection signal="body_entered" from="ylakerta/Maali2" to="ylakerta/Maali2" method="_on_body_entered"]
+[connection signal="body_entered" from="ylakerta/Maali3" to="ylakerta/Maali3" method="_on_body_entered"]
 
 [editable path="starting_room"]
 [editable path="starting_room/door_cable/plug"]
