@@ -1,5 +1,6 @@
 extends Node
 
+var hint_delay = 60000
 var prompt_active = false
 var prompt = "Would you like a hint? (y/n)"
 var hints = [
@@ -32,7 +33,8 @@ func _ready():
     $Hint.visible = false
 
 func _physics_process(_delta):
-    if Time.get_ticks_msec() - time_stamp_for_last_progress > 60000 and !prompt_active:
+    if Time.get_ticks_msec() - time_stamp_for_last_progress > hint_delay and !prompt_active:
+        hint_delay = 60000
         prompt_active = true
         prompt_hint()
 
@@ -41,6 +43,7 @@ func _input(_event):
         if Input.is_action_just_pressed("accept_hint"):
             show_hint()
         elif Input.is_action_just_pressed("refuse_hint"):
+            hint_delay = 120000
             hide_hint()
 
 func player_made_progress(progress: int):
