@@ -18,6 +18,7 @@ var back_end_url = ""
 var score
 
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	score = HIGHSCORE_SINGLETON.get_highscore()
 	back_end_url = "https://" + SECRETS.DOMAIN + "/highscores/" + HIGHSCORE_SINGLETON.GAME_NAME
 	playername_prompt.visible = false
