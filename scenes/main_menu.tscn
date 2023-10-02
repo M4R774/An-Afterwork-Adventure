@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://cmm1h57n8bdbm"]
+[gd_scene load_steps=10 format=3 uid="uid://cmm1h57n8bdbm"]
 
 [ext_resource type="Script" path="res://scripts/Menus and highscore/reset.gd" id="1_5ew53"]
+[ext_resource type="Theme" uid="uid://cplj56v4vssyh" path="res://ui/menu_theme.tres" id="1_tjsdi"]
 [ext_resource type="VideoStream" path="res://2d art/main_menu_video.ogv" id="2_da1lx"]
-[ext_resource type="Theme" uid="uid://c58w503qkdt8i" path="res://theme.tres" id="3"]
 [ext_resource type="Script" path="res://scripts/Menus and highscore/to_gameplay.gd" id="3_a6di8"]
 [ext_resource type="Script" path="res://scripts/videolooper.gd" id="3_gtyo2"]
 [ext_resource type="Script" path="res://scripts/Menus and highscore/to_highscores.gd" id="4_d3a0q"]
 [ext_resource type="Script" path="res://scripts/Menus and highscore/volume_slider.gd" id="5_psdlo"]
 [ext_resource type="AudioStream" uid="uid://dghrk0sqkjum0" path="res://audio/LimitedSpaceMAINMENU.ogg" id="8_6kn5i"]
+[ext_resource type="Texture2D" uid="uid://c1tprrfdaehv0" path="res://textures/lahtopassit_logo.png" id="9_kmmnx"]
 
 [node name="Main menu" type="Control"]
 layout_mode = 3
@@ -16,6 +17,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_tjsdi")
 script = ExtResource("1_5ew53")
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
@@ -51,13 +53,11 @@ theme_override_constants/separation = 35
 [node name="Pelinnimi" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "Lähtöpassi"
 horizontal_alignment = 1
 
 [node name="Start" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme = ExtResource("3")
 text = "Start"
 script = ExtResource("3_a6di8")
 
@@ -65,7 +65,6 @@ script = ExtResource("3_a6di8")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource("3")
 text = "Highscores"
 script = ExtResource("4_d3a0q")
 
@@ -90,7 +89,6 @@ theme_override_constants/separation = 20
 
 [node name="Volume" type="Label" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer"]
 layout_mode = 2
-theme = ExtResource("3")
 text = "Volume:"
 horizontal_alignment = 1
 
@@ -106,5 +104,18 @@ script = ExtResource("5_psdlo")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_6kn5i")
 autoplay = true
+
+[node name="game_logo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -175.5
+offset_top = -54.0
+offset_right = 175.5
+offset_bottom = 297.0
+grow_horizontal = 2
+texture = ExtResource("9_kmmnx")
+expand_mode = 1
 
 [connection signal="finished" from="VideoStreamPlayer" to="VideoStreamPlayer" method="_on_finished"]

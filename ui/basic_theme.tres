@@ -1,7 +1,8 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://b8rtuer7mht2o"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://b8rtuer7mht2o"]
 
 [ext_resource type="FontFile" uid="uid://ejk7wif8g7yr" path="res://keypad/fonts/Roboto-Regular.ttf" id="1_rno5r"]
+[ext_resource type="FontFile" uid="uid://iolv8n4we7q" path="res://ui/Montserrat-Medium.ttf" id="2_8v2kc"]
 
 [resource]
-default_font = ExtResource("1_rno5r")
+default_font = ExtResource("2_8v2kc")
 Label/fonts/font = ExtResource("1_rno5r")

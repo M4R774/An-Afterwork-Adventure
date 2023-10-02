@@ -1,9 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://bdkgacenuhs4q"]
+[gd_scene load_steps=23 format=3 uid="uid://bdkgacenuhs4q"]
 
 [ext_resource type="Texture2D" uid="uid://cyxifj8oou7md" path="res://2d art/dji_fly_20230812_204504_574_1691862362693_pano.jpg" id="1_giirg"]
 [ext_resource type="PackedScene" uid="uid://dx5184jxv6hi3" path="res://scenes/Player.tscn" id="1_ips0s"]
 [ext_resource type="PackedScene" uid="uid://tqeyokxa0dbs" path="res://scenes/socket.tscn" id="4_sqf1d"]
-[ext_resource type="PackedScene" uid="uid://ck886vglrw2kg" path="res://scenes/radio.tscn" id="6_yuf1o"]
 [ext_resource type="PackedScene" uid="uid://57unb5sp6ay6" path="res://scenes/extension_cable.tscn" id="7_t4qea"]
 [ext_resource type="PackedScene" uid="uid://bn2aw5aefcpw6" path="res://scenes/output_cable.tscn" id="8_83gjx"]
 [ext_resource type="PackedScene" uid="uid://10lsab5o5y53" path="res://scenes/lamp.tscn" id="8_dt8d4"]
@@ -14,8 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://dthrs460g5dyk" path="res://2d art/input.png" id="11_56hc1"]
 [ext_resource type="PackedScene" uid="uid://bhwdjuocaxtjv" path="res://keypad/scenes/door/Door.tscn" id="13_cgwom"]
 [ext_resource type="PackedScene" uid="uid://fg5sus138qia" path="res://keypad/scenes/keypad/Keypad.tscn" id="14_rcjnl"]
-[ext_resource type="PackedScene" uid="uid://csylvg25d888c" path="res://radio_transmitter.tscn" id="16_tx2sl"]
-[ext_resource type="PackedScene" uid="uid://ducckiwe27xbf" path="res://radio.tscn" id="17_b7bvh"]
+[ext_resource type="PackedScene" uid="uid://csylvg25d888c" path="res://scenes/radio_transmitter.tscn" id="16_tx2sl"]
+[ext_resource type="PackedScene" uid="uid://ducckiwe27xbf" path="res://scenes/radio.tscn" id="17_b7bvh"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ntudf"]
 panorama = ExtResource("1_giirg")
@@ -81,7 +80,7 @@ transform = Transform3D(0.761855, 0, 0.647748, 0, 1, 0, -0.647748, 0, 0.761855, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58749, 1.17818, 2.72462)
 is_energy_source = true
 
-[node name="Radio" parent="." instance=ExtResource("6_yuf1o")]
+[node name="Radio" parent="." instance=ExtResource("17_b7bvh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.656436, 1.06939, -2.44705)
 
 [node name="Lamp" parent="." instance=ExtResource("8_dt8d4")]
