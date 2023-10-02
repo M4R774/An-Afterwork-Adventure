@@ -10,7 +10,7 @@ func _ready():
 
 func _process(_delta):
 	var collider = get_collider()
-	if is_colliding() and collider.has_method("get_interaction_text") and collider.has_method("interact") and collider != null:
+	if is_colliding() and collider != null and collider.has_method("get_interaction_text") and collider.has_method("interact"):
 		if !collider.is_in_group("socket"):
 			if current_collider != collider:
 				set_interaction_text(collider.get_interaction_text())

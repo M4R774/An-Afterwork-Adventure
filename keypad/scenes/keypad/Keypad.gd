@@ -33,7 +33,7 @@ func on_button_interact(value):
 	is_audio_playing = true
 	pressed_audio.playing = true
 	# print("interacted with " + str(value))
-	if value == ".":
+	if value == " ":
 		if password == correct_password:
 			correct_audio.play()
 			emit_signal("on_correct_password", password)

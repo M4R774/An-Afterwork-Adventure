@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://7ucxogqh1oqc"]
+
+[ext_resource type="Script" path="res://scripts/Menus and highscore/settings.gd" id="1_wv72y"]
+
+[node name="settings" type="Node"]
+script = ExtResource("1_wv72y")

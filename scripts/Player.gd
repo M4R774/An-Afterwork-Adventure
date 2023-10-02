@@ -65,7 +65,8 @@ func process_input():
 		direction += transform.basis.x
 		
 	if Input.is_action_just_pressed("crouching"):
-		toggle_crouch()
+		pass
+		#toggle_crouch()
 	# Jumping
 	wish_jump = Input.is_action_just_pressed("jump")
 	
