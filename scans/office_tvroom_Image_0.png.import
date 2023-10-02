@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bp138tlkfktnu"
-path.s3tc="res://.godot/imported/office_tvroom_Image_0.png-c1b75fd89bfd2ba29f7b3deeb1c34919.s3tc.ctex"
+path.s3tc="res://.godot/imported/office_tvroom_Image_0.png-56c5c690b9aa3432fc9ef950be06a3a7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -13,7 +13,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://scans/office_tvroom_Image_0.png"
-dest_files=["res://.godot/imported/office_tvroom_Image_0.png-c1b75fd89bfd2ba29f7b3deeb1c34919.s3tc.ctex"]
+dest_files=["res://.godot/imported/office_tvroom_Image_0.png-56c5c690b9aa3432fc9ef950be06a3a7.s3tc.ctex"]
 
 [params]
 

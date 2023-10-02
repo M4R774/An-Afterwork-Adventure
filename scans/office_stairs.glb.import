@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ddw3ar0he4cf8"
-path="res://.godot/imported/office_stairs.glb-fe796e66b65999aab0701938e702c631.scn"
+path="res://.godot/imported/office_stairs.glb-3448bb958f02f75d6f2e40c1c13acb59.scn"
 
 [deps]
 
 source_file="res://scans/office_stairs.glb"
-dest_files=["res://.godot/imported/office_stairs.glb-fe796e66b65999aab0701938e702c631.scn"]
+dest_files=["res://.godot/imported/office_stairs.glb-3448bb958f02f75d6f2e40c1c13acb59.scn"]
 
 [params]
 

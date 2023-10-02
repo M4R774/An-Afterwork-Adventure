@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://twmg5vnvyo53"
-path="res://.godot/imported/office_room_end.glb-673dc68674af9214f5a2d6fc7e507d6e.scn"
+path="res://.godot/imported/office_room_end.glb-894003190a7ea2ea5d7a803d0f9706a4.scn"
 
 [deps]
 
 source_file="res://scans/office_room_end.glb"
-dest_files=["res://.godot/imported/office_room_end.glb-673dc68674af9214f5a2d6fc7e507d6e.scn"]
+dest_files=["res://.godot/imported/office_room_end.glb-894003190a7ea2ea5d7a803d0f9706a4.scn"]
 
 [params]
 

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dbnu4mfg24nmi"
-path.s3tc="res://.godot/imported/office_0_Image_0.jpeg-5d583c1a245b745145ebd93fbfb823a6.s3tc.ctex"
+path.s3tc="res://.godot/imported/office_0_Image_0.jpeg-90355f62579c3f40f0c9c3d88d43124c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,7 +12,7 @@ metadata={
 [deps]
 
 source_file="res://textures/office_0_Image_0.jpeg"
-dest_files=["res://.godot/imported/office_0_Image_0.jpeg-5d583c1a245b745145ebd93fbfb823a6.s3tc.ctex"]
+dest_files=["res://.godot/imported/office_0_Image_0.jpeg-90355f62579c3f40f0c9c3d88d43124c.s3tc.ctex"]
 
 [params]
 

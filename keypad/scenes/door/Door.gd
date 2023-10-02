@@ -44,7 +44,7 @@ func close():
 	anim_player.play_backwards("open_door")
 
 
-func _on_AnimationPlayer_animation_finished(anim_string):
+func _on_AnimationPlayer_animation_finished(_anim_string):
 	if state == STATE.OPEN:
 		state = STATE.CLOSED
 	else:

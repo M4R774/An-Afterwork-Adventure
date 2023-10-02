@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://xhi167jyjlax"
-path.s3tc="res://.godot/imported/office_stairs_Image_0.png-312f0f8c8888c60f6c87ab6fa07ad837.s3tc.ctex"
+path.s3tc="res://.godot/imported/office_stairs_Image_0.png-767261b4bb551737329c15e354873c1f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -13,7 +13,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://scans/office_stairs_Image_0.png"
-dest_files=["res://.godot/imported/office_stairs_Image_0.png-312f0f8c8888c60f6c87ab6fa07ad837.s3tc.ctex"]
+dest_files=["res://.godot/imported/office_stairs_Image_0.png-767261b4bb551737329c15e354873c1f.s3tc.ctex"]
 
 [params]
 

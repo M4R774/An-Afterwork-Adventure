@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bxrj1c4quvqjy"
-path="res://.godot/imported/office_downstairs.glb-0094c6b7280c335c6ad912c6d2f47838.scn"
+path="res://.godot/imported/office_downstairs.glb-5dfa5984fec8d234976eb7510d2195ab.scn"
 
 [deps]
 
 source_file="res://scans/office_downstairs.glb"
-dest_files=["res://.godot/imported/office_downstairs.glb-0094c6b7280c335c6ad912c6d2f47838.scn"]
+dest_files=["res://.godot/imported/office_downstairs.glb-5dfa5984fec8d234976eb7510d2195ab.scn"]
 
 [params]
 

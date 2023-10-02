@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bim1ydiw3l7xi"
-path.s3tc="res://.godot/imported/office_room_end_Image_0_1.png-01558ce6833f25a29f163e03e69d6962.s3tc.ctex"
+path.s3tc="res://.godot/imported/office_room_end_Image_0_1.png-4dda7b55837b1c0a6021d20a2af1d06e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -13,7 +13,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://scans/office_room_end_Image_0_1.png"
-dest_files=["res://.godot/imported/office_room_end_Image_0_1.png-01558ce6833f25a29f163e03e69d6962.s3tc.ctex"]
+dest_files=["res://.godot/imported/office_room_end_Image_0_1.png-4dda7b55837b1c0a6021d20a2af1d06e.s3tc.ctex"]
 
 [params]
 
