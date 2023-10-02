@@ -21,7 +21,9 @@ func get_highscore():
 
 
 func score_is_high_enough_for_local_leaderboard(score):
-	if LOCAL_HIGHSCORES.size() < 10 or LOCAL_HIGHSCORES[-1]["score"] < score:
+	if LOCAL_HIGHSCORES[-1]["score"] == null:
+		return true
+	elif LOCAL_HIGHSCORES.size() < 10 or LOCAL_HIGHSCORES[-1]["score"] < score:
 		return true
 	else:
 		return false
