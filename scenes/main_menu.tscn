@@ -37,13 +37,29 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -175.5
-offset_top = -38.0
-offset_right = 175.5
-offset_bottom = 313.0
+offset_left = -429.5
+offset_top = -240.0
+offset_right = 429.5
+offset_bottom = 619.0
 grow_horizontal = 2
 texture = ExtResource("9_kmmnx")
 expand_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="game_logo"]
+modulate = Color(0, 0, 0, 0.392157)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -404.5
+offset_top = -132.5
+offset_right = 404.5
+offset_bottom = 59.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
