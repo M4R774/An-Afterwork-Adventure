@@ -11,12 +11,21 @@ func _ready():
 func _process(_delta):
 	var collider = get_collider()
 	if is_colliding() and collider.has_method("get_interaction_text") and collider.has_method("interact") and collider != null:
-		if current_collider != collider:
-			set_interaction_text(collider.get_interaction_text())
-			current_collider = collider
-		if Input.is_action_just_pressed("use"):
-			current_collider.interact()
-			set_interaction_text(collider.get_interaction_text())
+		if !collider.is_in_group("socket"):
+			if current_collider != collider:
+				set_interaction_text(collider.get_interaction_text())
+				current_collider = collider
+			if Input.is_action_just_pressed("use"):
+				current_collider.interact()
+				set_interaction_text(collider.get_interaction_text())
+		else:
+			if $"../InteractionManager".has_plug_in_hand:
+				if current_collider != collider:
+					set_interaction_text(collider.get_interaction_text())
+					current_collider = collider
+				if Input.is_action_just_pressed("use"):
+					current_collider.interact()
+					set_interaction_text(collider.get_interaction_text())
 	else:# is_instance_valid(current_collider):
 		current_collider = null;
 		set_interaction_text("");

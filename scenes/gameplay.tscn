@@ -497,7 +497,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00294203, 0)
 
 [node name="socket_0" type="RigidBody3D" parent="gofore_0/ExtensionCable/extension" groups=["socket"]]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.00172303, 0.21925, -0.0728592)
-collision_layer = 16
+collision_layer = 18
 collision_mask = 0
 freeze = true
 script = ExtResource("9_wfss4")
@@ -519,7 +519,7 @@ texture = ExtResource("10_e8spf")
 
 [node name="socket_1" type="RigidBody3D" parent="gofore_0/ExtensionCable/extension" groups=["socket"]]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.00172303, 0.21925, -0.237967)
-collision_layer = 16
+collision_layer = 18
 collision_mask = 0
 freeze = true
 script = ExtResource("9_wfss4")
@@ -541,7 +541,7 @@ texture = ExtResource("10_e8spf")
 
 [node name="socket_2" type="RigidBody3D" parent="gofore_0/ExtensionCable/extension" groups=["socket"]]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.00172303, 0.21925, -0.3997)
-collision_layer = 16
+collision_layer = 18
 collision_mask = 0
 freeze = true
 script = ExtResource("9_wfss4")

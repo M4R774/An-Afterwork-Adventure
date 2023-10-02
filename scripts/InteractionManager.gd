@@ -6,6 +6,7 @@ const ray_length = 1000
 
 var item
 var has_item_in_hand = false
+var has_plug_in_hand = false
 
 func _physics_process(delta):
 	if Input.is_action_just_released("use"):
@@ -24,7 +25,8 @@ func _physics_process(delta):
 					item.plug_in(raycast_result["collider"])
 					has_item_in_hand = false
 				else:
-					return
+					item.drop()
+					has_item_in_hand = false
 			else:
 				print("Item dropped")
 				item.drop()
@@ -47,6 +49,8 @@ func _physics_process(delta):
 					item = raycast_result["collider"]
 					item.pick_up(hand_pos)
 					has_item_in_hand = true
+					if item.is_in_group("plug"):
+						has_plug_in_hand = true
 				elif raycast_result["collider"].is_in_group("socket"):
 					print("i aint got no plug in hand")
 			elif has_item_in_hand:
@@ -80,3 +84,7 @@ func _physics_process(delta):
 					print("ouch!")
 	if Input.is_action_just_released("mouse_left"):
 		$"../hand/AnimationPlayer".play_backwards("point")
+	
+	# cant have plug if u havent got nothing
+	if !has_item_in_hand:
+		has_plug_in_hand = has_item_in_hand

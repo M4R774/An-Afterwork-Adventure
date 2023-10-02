@@ -87,7 +87,7 @@ func change_electricity(value):
 
 func can_plug_in(incoming_item):
 	var can = false
-	if plug == null and incoming_item.type != type:
+	if plug == null and incoming_item.has_method("can_plug_in") and incoming_item.type != type:
 		can = true
 	return can
 
@@ -141,7 +141,10 @@ func _on_area_3d_body_exited(body):
 
 # overriden in child
 func get_interaction_text():
-	return "pick up plug"
+	if type == 1:
+		return "pick up plug"
+	elif type == 2:
+		return "insert plug"
 
 # overriden in child
 func interact():
