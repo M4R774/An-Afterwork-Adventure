@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://ccgkg3kymlb6d"]
+[gd_scene load_steps=69 format=3 uid="uid://ccgkg3kymlb6d"]
 
 [ext_resource type="PackedScene" uid="uid://dx5184jxv6hi3" path="res://scenes/Player.tscn" id="2_1eigl"]
 [ext_resource type="Texture2D" uid="uid://dhjipjt4l0tfr" path="res://2d art/dji_fly_20230930_225748_583_1696103973784_pano.jpg" id="3_ou7m1"]
@@ -31,6 +31,7 @@
 [ext_resource type="Material" uid="uid://bkqu36rs5dcj8" path="res://materials/red.tres" id="29_salc3"]
 [ext_resource type="Script" path="res://scripts/Goal.gd" id="30_xesng"]
 [ext_resource type="AudioStream" uid="uid://dwxw365mopu2r" path="res://audio/LimitedSpace01_0_3-_publish.ogg" id="31_iapud"]
+[ext_resource type="PackedScene" uid="uid://ctymgjob6xwuh" path="res://3d art/morse_book.glb" id="31_j3n0k"]
 [ext_resource type="PackedScene" uid="uid://csylvg25d888c" path="res://scenes/radio_transmitter.tscn" id="32_ryjr6"]
 [ext_resource type="PackedScene" uid="uid://ducckiwe27xbf" path="res://scenes/radio.tscn" id="33_mxeui"]
 
@@ -695,6 +696,9 @@ script = ExtResource("30_xesng")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="gofore_upstairs/Maali"]
 transform = Transform3D(1, -2.70578e-23, 1.22337e-08, -1.06467e-22, 1, 8.38243e-24, 9.07289e-09, 2.90068e-23, 1, 0, -0.411965, 0)
 shape = SubResource("BoxShape3D_f1d0e")
+
+[node name="morse_book" parent="gofore_upstairs" instance=ExtResource("31_j3n0k")]
+transform = Transform3D(0.0282839, 0, 0.19799, 0, 0.2, 0, -0.19799, 0, 0.0282839, -3.04651, 0.701094, -4.91486)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("31_iapud")

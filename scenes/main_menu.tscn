@@ -32,6 +32,19 @@ autoplay = true
 expand = true
 script = ExtResource("3_gtyo2")
 
+[node name="game_logo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -175.5
+offset_top = -38.0
+offset_right = 175.5
+offset_bottom = 313.0
+grow_horizontal = 2
+texture = ExtResource("9_kmmnx")
+expand_mode = 1
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -52,7 +65,9 @@ theme_override_constants/separation = 35
 
 [node name="Pelinnimi" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/line_spacing = 50
 theme_override_font_sizes/font_size = 40
+text = " "
 horizontal_alignment = 1
 
 [node name="Start" type="Button" parent="MarginContainer/VBoxContainer"]
@@ -104,18 +119,5 @@ script = ExtResource("5_psdlo")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_6kn5i")
 autoplay = true
-
-[node name="game_logo" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -175.5
-offset_top = -54.0
-offset_right = 175.5
-offset_bottom = 297.0
-grow_horizontal = 2
-texture = ExtResource("9_kmmnx")
-expand_mode = 1
 
 [connection signal="finished" from="VideoStreamPlayer" to="VideoStreamPlayer" method="_on_finished"]
