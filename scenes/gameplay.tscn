@@ -847,7 +847,7 @@ transform = Transform3D(1, 0, -7.45058e-09, 5.29396e-23, 1, -6.53473e-23, 7.4505
 shape = SubResource("BoxShape3D_2s473")
 
 [node name="morse_book" parent="ylakerta" instance=ExtResource("31_j3n0k")]
-transform = Transform3D(0.0390113, 0, 0.196158, 0, 0.2, 0, -0.196158, 0, 0.0390112, -3.09026, 0.702021, -4.87697)
+transform = Transform3D(-0.195073, -0.225336, -0.0342104, -0.00449072, 0.0488212, -0.295967, 0.227874, -0.191938, -0.0351188, 2.38871, 1.21619, -1.20063)
 
 [node name="Maali" type="Area3D" parent="ylakerta"]
 transform = Transform3D(-1.968, 5.62128e-16, -0.356334, 6.97574e-16, 2, -6.97574e-16, 0.356334, -8.10698e-16, -1.968, 2.11828, 0.177253, 16.2614)
