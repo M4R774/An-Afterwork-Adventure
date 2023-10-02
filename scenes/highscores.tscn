@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/Menus and highscore/loading_icon.gd" id="4_jckaa"]
 [ext_resource type="Script" path="res://scripts/Menus and highscore/to_main_menu.gd" id="5_2u28t"]
 [ext_resource type="Script" path="res://scripts/Menus and highscore/your_latest_score.gd" id="5_f70gn"]
-[ext_resource type="Texture2D" uid="uid://cek2i4xytn5sr" path="res://sprites/loading-icon.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://cek2i4xytn5sr" path="res://Sprites/loading-icon.png" id="6"]
 [ext_resource type="Script" path="res://scripts/Menus and highscore/name_field.gd" id="6_e3hlf"]
 [ext_resource type="Script" path="res://scripts/Menus and highscore/submit_highscore.gd" id="7_gkyrt"]
 [ext_resource type="VideoStream" path="res://2d art/victory_video.ogv" id="9_lemtl"]

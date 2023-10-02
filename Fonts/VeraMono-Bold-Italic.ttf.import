@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://6lx1708uc7j3"
-path="res://.godot/imported/VeraMono-Bold-Italic.ttf-ff816eaa5a3dacbb8cca99eebcc488ec.fontdata"
+path="res://.godot/imported/VeraMono-Bold-Italic.ttf-85350b891d8f12fa782be6ff827a56a5.fontdata"
 
 [deps]
 
-source_file="res://fonts/VeraMono-Bold-Italic.ttf"
-dest_files=["res://.godot/imported/VeraMono-Bold-Italic.ttf-ff816eaa5a3dacbb8cca99eebcc488ec.fontdata"]
+source_file="res://Fonts/VeraMono-Bold-Italic.ttf"
+dest_files=["res://.godot/imported/VeraMono-Bold-Italic.ttf-85350b891d8f12fa782be6ff827a56a5.fontdata"]
 
 [params]
 

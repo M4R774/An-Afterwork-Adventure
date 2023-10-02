@@ -12,7 +12,7 @@ size = Vector3(0.354821, 0.177469, 0.539516)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1wepn"]
 albedo_color = Color(1, 0.321569, 1, 1)
 
-[node name="Radio_transmitter" type="Node3D"]
+[node name="radio-transmitter" type="Node3D"]
 script = ExtResource("1_1axa6")
 
 [node name="plug_with_cable" type="Node3D" parent="."]

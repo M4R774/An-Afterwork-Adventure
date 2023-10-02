@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://uljfvni6d4le"
-path="res://.godot/imported/VeraMono.ttf-45e6776e66fe13345390bf33d33b6673.fontdata"
+path="res://.godot/imported/VeraMono.ttf-46191775cd3a0ecb0d4c76b444a0242e.fontdata"
 
 [deps]
 
-source_file="res://fonts/VeraMono.ttf"
-dest_files=["res://.godot/imported/VeraMono.ttf-45e6776e66fe13345390bf33d33b6673.fontdata"]
+source_file="res://Fonts/VeraMono.ttf"
+dest_files=["res://.godot/imported/VeraMono.ttf-46191775cd3a0ecb0d4c76b444a0242e.fontdata"]
 
 [params]
 
