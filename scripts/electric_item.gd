@@ -28,7 +28,7 @@ func _ready():
 	change_electricity(has_electricity)
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if is_in_hand:
 		global_position = hand.global_position
 	if is_plugged:
@@ -105,7 +105,7 @@ func plug_plugged(attached_plug):
 			change_electricity(plug.has_electricity)
 
 
-func plug_unplugged(detached_plug):
+func plug_unplugged(_detached_plug):
 	if self.is_in_group("water"):
 		pass
 	else:

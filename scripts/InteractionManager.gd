@@ -8,7 +8,7 @@ var item
 var has_item_in_hand = false
 var has_plug_in_hand = false
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if Input.is_action_just_released("use"):
 		var space_state = get_world_3d().direct_space_state
 		var mouse_position = get_viewport().get_mouse_position()

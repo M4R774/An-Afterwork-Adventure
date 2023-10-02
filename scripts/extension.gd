@@ -5,7 +5,7 @@ var hand
 @export var interaction_text: String = "pick up radio equipment"
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if is_in_hand:
 		global_position = hand.global_position
 

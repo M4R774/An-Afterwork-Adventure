@@ -9,7 +9,7 @@ signal on_interact
 func set_number(value):
 	number = value
 	if value:
-		$Viewport/Label.text = str(value)
+		$Label3D.text = str(value)
 
 func get_number():
 	return number

@@ -25,21 +25,9 @@ number = "2"
 [node name="MeshInstance" type="MeshInstance3D" parent="."]
 mesh = SubResource("2")
 
-[node name="Viewport" type="SubViewport" parent="."]
-transparent_bg = true
-size = Vector2i(20, 20)
-
-[node name="Label" type="Label" parent="Viewport"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(-0.575, 5.02681e-08, 0, -5.02681e-08, -0.575, 0, 0, 0, 0.575, 3.94912e-18, 0.00272655, -0.00859589)
 text = "2"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, -0.006)

@@ -21,11 +21,9 @@ func _ready():
 	on_correct_password.connect(_on_Keypad_on_correct_password)
 	if door == null:
 		print("Error: Door not set for keypad")
-	var i = 0
 	for child in keys.get_children():
 		if child is StaticBody3D:
 			child.set_number(child.get_number())
-			i += 1
 			child.on_interact.connect(on_button_interact)
 	password_label.text = ""
 
@@ -57,7 +55,7 @@ func on_button_interact(value):
 func _on_AudioStreamPlayer3D_finished():
 	is_audio_playing = false
 
-func _on_Keypad_on_correct_password(password):
+func _on_Keypad_on_correct_password(_password):
 	print("correct password")
 	if door == null:
 		print("Error: Password was correct, but the keypad was not connected to any door or interactable.")
