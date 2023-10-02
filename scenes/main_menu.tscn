@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://cmm1h57n8bdbm"]
 
 [ext_resource type="Script" path="res://scripts/Menus and highscore/reset.gd" id="1_5ew53"]
-[ext_resource type="Theme" path="res://ui/menu_theme.tres" id="1_tjsdi"]
+[ext_resource type="Theme" uid="uid://cplj56v4vssyh" path="res://ui/menu_theme.tres" id="1_tjsdi"]
 [ext_resource type="VideoStream" path="res://2d art/main_menu_video.ogv" id="2_da1lx"]
 [ext_resource type="Script" path="res://scripts/Menus and highscore/to_gameplay.gd" id="3_a6di8"]
 [ext_resource type="Script" path="res://scripts/videolooper.gd" id="3_gtyo2"]
