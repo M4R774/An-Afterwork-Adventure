@@ -14,7 +14,7 @@ size = Vector3(0.332287, 0.415244, 0.35617)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1wepn"]
 albedo_color = Color(1, 0.321569, 1, 1)
 
-[node name="Radio" type="Node3D"]
+[node name="radio" type="Node3D"]
 script = ExtResource("1_2l1uy")
 
 [node name="kohina" type="AudioStreamPlayer3D" parent="."]
