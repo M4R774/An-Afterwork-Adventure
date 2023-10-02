@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bt2xryd8kw7f4"
-path="res://.godot/imported/gofore_tvroom.glb-41555d9ec9df7df8a032ac9f342be82d.scn"
+path="res://.godot/imported/office_tvroom.glb-41555d9ec9df7df8a032ac9f342be82d.scn"
 
 [deps]
 
-source_file="res://scans/gofore_tvroom.glb"
-dest_files=["res://.godot/imported/gofore_tvroom.glb-41555d9ec9df7df8a032ac9f342be82d.scn"]
+source_file="res://scans/office_tvroom.glb"
+dest_files=["res://.godot/imported/office_tvroom.glb-41555d9ec9df7df8a032ac9f342be82d.scn"]
 
 [params]
 

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/HINTS.gd" id="1_y2pni"]
 [ext_resource type="PackedScene" uid="uid://dx5184jxv6hi3" path="res://scenes/Player.tscn" id="2_1eigl"]
 [ext_resource type="Texture2D" uid="uid://dhjipjt4l0tfr" path="res://2d art/dji_fly_20230930_225748_583_1696103973784_pano.jpg" id="3_ou7m1"]
-[ext_resource type="PackedScene" uid="uid://dfms8ym8k33ua" path="res://scans/gofore_0.glb" id="4_oiish"]
+[ext_resource type="PackedScene" uid="uid://dfms8ym8k33ua" path="res://scans/office_0.glb" id="4_oiish"]
 [ext_resource type="PackedScene" uid="uid://tcfmayf0lxh5" path="res://scenes/pause_menu.tscn" id="4_r4d44"]
 [ext_resource type="Script" path="res://scripts/puzzle 1/door.gd" id="5_2vnkx"]
 [ext_resource type="Script" path="res://addons/Rope3D/Rope3D.gd" id="6_d12g2"]
@@ -13,22 +13,22 @@
 [ext_resource type="Texture2D" uid="uid://bvgintnndi0tf" path="res://2d art/bolt.png" id="10_e8spf"]
 [ext_resource type="PackedScene" uid="uid://c1m3n3bx171t8" path="res://3d art/plug.glb" id="11_ars10"]
 [ext_resource type="PackedScene" uid="uid://hq6h0lejmjyh" path="res://scenes/keyboard.tscn" id="12_dhm4r"]
-[ext_resource type="PackedScene" uid="uid://ddw3ar0he4cf8" path="res://scans/gofore_stairs.glb" id="13_3dmxy"]
+[ext_resource type="PackedScene" uid="uid://ddw3ar0he4cf8" path="res://scans/office_stairs.glb" id="13_3dmxy"]
 [ext_resource type="PackedScene" uid="uid://di5wjj0fkafnc" path="res://3d art/grey_door_blocker.glb" id="14_q4c2i"]
-[ext_resource type="PackedScene" uid="uid://bt2xryd8kw7f4" path="res://scans/gofore_tvroom.glb" id="15_8fkf0"]
+[ext_resource type="PackedScene" uid="uid://bt2xryd8kw7f4" path="res://scans/office_tvroom.glb" id="15_8fkf0"]
 [ext_resource type="Script" path="res://scripts/whiteboard.gd" id="16_253w7"]
 [ext_resource type="PackedScene" uid="uid://hkys6umsiflr" path="res://3d art/whiteboard.glb" id="17_pc1q7"]
 [ext_resource type="Material" uid="uid://xm5lm73erdlu" path="res://textures/unwiped_material.tres" id="18_nu2oh"]
 [ext_resource type="Material" uid="uid://b8p7hutgl0g71" path="res://textures/wiped_material.tres" id="19_y22j0"]
-[ext_resource type="PackedScene" uid="uid://twmg5vnvyo53" path="res://scans/gofore_room_end.glb" id="20_xeu00"]
+[ext_resource type="PackedScene" uid="uid://twmg5vnvyo53" path="res://scans/office_room_end.glb" id="20_xeu00"]
 [ext_resource type="Script" path="res://keypad/scenes/door/Door.gd" id="21_chq5b"]
 [ext_resource type="PackedScene" uid="uid://bxwpoajh7ekrn" path="res://3d art/door.glb" id="22_q5pr1"]
 [ext_resource type="Material" uid="uid://bbupq6mayivnv" path="res://materials/orange.tres" id="23_mf8om"]
 [ext_resource type="PackedScene" uid="uid://fg5sus138qia" path="res://keypad/scenes/keypad/Keypad.tscn" id="24_lobxq"]
-[ext_resource type="PackedScene" uid="uid://bxrj1c4quvqjy" path="res://scans/gofore_downstairs.glb" id="25_qng2e"]
+[ext_resource type="PackedScene" uid="uid://bxrj1c4quvqjy" path="res://scans/office_downstairs.glb" id="25_qng2e"]
 [ext_resource type="Script" path="res://scripts/keycard.gd" id="26_f1y6i"]
 [ext_resource type="PackedScene" uid="uid://fgbrl02tqy2w" path="res://3d art/keycard.glb" id="27_jrus1"]
-[ext_resource type="PackedScene" uid="uid://cp076ltsbc7jv" path="res://scans/gofore_upstairs.glb" id="28_leejg"]
+[ext_resource type="PackedScene" uid="uid://cp076ltsbc7jv" path="res://scans/office_upstairs.glb" id="28_leejg"]
 [ext_resource type="Material" uid="uid://bkqu36rs5dcj8" path="res://materials/red.tres" id="29_salc3"]
 [ext_resource type="Script" path="res://scenes/keycard_reader.gd" id="30_5kdam"]
 [ext_resource type="Script" path="res://scripts/Goal.gd" id="30_xesng"]
@@ -430,7 +430,7 @@ horizontal_alignment = 1
 [node name="Pause menu" parent="." instance=ExtResource("4_r4d44")]
 
 [node name="TBLoader" type="TBLoader" parent="."]
-map_resource = "res://maps/gofore.map"
+map_resource = "res://maps/office.map"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1, -2)
 
 [node name="Default Layer" type="Node3D" parent="TBLoader"]
@@ -454,18 +454,18 @@ environment = SubResource("Environment_ob0n4")
 [node name="starting_room" parent="." instance=ExtResource("4_oiish")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.826956, 0.0135825, -0.668772)
 
-[node name="gofore_o_door" parent="starting_room" index="0"]
+[node name="office_o_door" parent="starting_room" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.68993, 0, 0.648053)
 script = ExtResource("5_2vnkx")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="starting_room/gofore_o_door" index="0"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="starting_room/office_o_door" index="0"]
 libraries = {
 "": SubResource("AnimationLibrary_vg1jq")
 }
 
-[node name="StaticBody3D" type="StaticBody3D" parent="starting_room/gofore_o_door" index="1"]
+[node name="StaticBody3D" type="StaticBody3D" parent="starting_room/office_o_door" index="1"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="starting_room/gofore_o_door/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="starting_room/office_o_door/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_n6hme")
 
 [node name="door_cable" type="Node3D" parent="starting_room"]
@@ -905,7 +905,7 @@ radio_receiver = NodePath("../Radio")
 transform = Transform3D(1, -3.48787e-16, 3.48787e-16, 3.48787e-16, 1, -3.48787e-16, -3.48787e-16, 3.48787e-16, 1, -0.231021, -0.00712496, -4.59293)
 radio_transmitter = NodePath("../Radio_transmitter")
 
-[connection signal="electricity_changed" from="starting_room/door_cable/plug" to="starting_room/gofore_o_door" method="_on_plug_electricity_changed"]
+[connection signal="electricity_changed" from="starting_room/door_cable/plug" to="starting_room/office_o_door" method="_on_plug_electricity_changed"]
 [connection signal="body_entered" from="ylakerta/Maali" to="ylakerta/Maali" method="_on_body_entered"]
 [connection signal="body_entered" from="ylakerta/Maali2" to="ylakerta/Maali2" method="_on_body_entered"]
 [connection signal="body_entered" from="ylakerta/Maali3" to="ylakerta/Maali3" method="_on_body_entered"]
